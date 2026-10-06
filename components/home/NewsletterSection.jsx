@@ -22,7 +22,7 @@ export default function NewsletterSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           {/* Left copy */}
           <div className="lg:col-span-6">
-            <span className="text-[10px] font-bold uppercase tracking-widest text-[#B6E600] block mb-2">
+            <span className="text-[10px] font-bold uppercase tracking-widest text-nivora-lime block mb-2">
               EXCLUSIVE ACCESS
             </span>
             <h2 className="text-2xl sm:text-3xl font-black font-editorial tracking-tight uppercase text-white">
@@ -36,7 +36,7 @@ export default function NewsletterSection() {
           {/* Right form */}
           <div className="lg:col-span-6">
             {subscribed ? (
-              <div className="p-4 bg-[#181818] border border-[#2A2A2A] text-[#B6E600] text-xs font-bold uppercase tracking-wider flex items-center gap-2">
+              <div className="p-4 bg-nivora-dark border border-[#2A2A2A] text-nivora-lime text-xs font-bold uppercase tracking-wider flex items-center gap-2">
                 <CheckCircle2 className="h-4 w-4" />
                 YOU&apos;RE ON THE LIST. WATCH YOUR INBOX FOR UPCOMING DROPS.
               </div>
@@ -48,7 +48,7 @@ export default function NewsletterSection() {
                   placeholder="ENTER YOUR EMAIL ADDRESS"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="bg-[#181818] border-[#333333] text-white placeholder:text-[#666666] text-xs uppercase h-12 flex-1"
+                  className="bg-nivora-dark border-[#333333] text-white placeholder:text-nivora-muted text-xs uppercase h-12 flex-1"
                 />
                 <Button
                   type="submit"

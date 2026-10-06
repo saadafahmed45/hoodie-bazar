@@ -109,7 +109,7 @@ export default function ShopClient({ initialProducts = [], initialCategory = "Al
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
       {/* Top Banner / Title */}
-      <div className="mb-10 pb-6 border-b border-[#E2E2E2] flex flex-col md:flex-row md:items-end justify-between gap-4">
+      <div className="mb-10 pb-6 border-b border-nivora-border flex flex-col md:flex-row md:items-end justify-between gap-4">
         <div>
           <span className="text-[10px] font-bold uppercase tracking-widest text-[#888888] block mb-1">
             ARCHIVE 2026
@@ -121,7 +121,7 @@ export default function ShopClient({ initialProducts = [], initialCategory = "Al
               ? "SHOP ALL"
               : selectedCategory}
           </h1>
-          <p className="mt-1 text-xs text-[#666666] uppercase tracking-wider">
+          <p className="mt-1 text-xs text-nivora-muted uppercase tracking-wider">
             {initialFilter === "wishlist"
               ? "Your curated collection of saved garments."
               : "Explore our latest collection of heavyweight winter essentials."}
@@ -142,7 +142,7 @@ export default function ShopClient({ initialProducts = [], initialCategory = "Al
                 FILTERS
               </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="w-[300px] p-6 overflow-y-auto">
+            <SheetContent side="left" className="w-75 p-6 overflow-y-auto">
               <SheetHeader className="mb-6">
                 <SheetTitle className="text-sm font-bold uppercase tracking-widest">
                   FILTER PRODUCTS
@@ -217,11 +217,11 @@ export default function ShopClient({ initialProducts = [], initialCategory = "Al
           </div>
 
           {filteredProducts.length === 0 ? (
-            <div className="py-24 text-center border border-dashed border-[#E2E2E2] p-8">
+            <div className="py-24 text-center border border-dashed border-nivora-border p-8">
               <p className="text-xs font-bold uppercase tracking-widest text-[#111111] mb-2">
                 NO PRODUCTS MATCH YOUR SELECTION
               </p>
-              <p className="text-xs text-[#666666] max-w-sm mx-auto mb-6">
+              <p className="text-xs text-nivora-muted max-w-sm mx-auto mb-6">
                 Try resetting your filters or exploring another winter category.
               </p>
               <Button variant="default" size="sm" onClick={handleReset}>

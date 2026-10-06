@@ -14,7 +14,7 @@ const SelectTrigger = React.forwardRef(
     <SelectPrimitive.Trigger
       ref={ref}
       className={cn(
-        "flex h-11 w-full items-center justify-between border border-[#E2E2E2] bg-white px-3.5 py-2 text-xs uppercase tracking-wider text-[#111111] placeholder:text-[#888888] focus:outline-none focus:border-[#111111] disabled:cursor-not-allowed disabled:opacity-50",
+        "flex h-11 w-full items-center justify-between border border-nivora-border bg-white px-3.5 py-2 text-xs uppercase tracking-wider text-[#111111] placeholder:text-[#888888] focus:outline-none focus:border-[#111111] disabled:cursor-not-allowed disabled:opacity-50",
         className
       )}
       {...props}
@@ -34,7 +34,7 @@ const SelectContent = React.forwardRef(
       <SelectPrimitive.Content
         ref={ref}
         className={cn(
-          "relative z-50 max-h-72 min-w-[8rem] overflow-hidden border border-[#E2E2E2] bg-white text-[#111111] shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+          "relative z-50 max-h-72 min-w-32 overflow-hidden border border-nivora-border bg-white text-[#111111] shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
           position === "popper" &&
             "data-[side=bottom]:translate-y-1 data-[side=top]:-translate-y-1",
           className
@@ -46,7 +46,7 @@ const SelectContent = React.forwardRef(
           className={cn(
             "p-1",
             position === "popper" &&
-              "h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]"
+              "h-(--radix-select-trigger-height) w-full min-w-(--radix-select-trigger-width)"
           )}
         >
           {children}
@@ -62,7 +62,7 @@ const SelectItem = React.forwardRef(
     <SelectPrimitive.Item
       ref={ref}
       className={cn(
-        "relative flex w-full cursor-pointer select-none items-center py-2.5 pl-8 pr-3 text-xs uppercase tracking-wider text-[#111111] outline-none hover:bg-[#F5F5F3] focus:bg-[#F5F5F3] data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+        "relative flex w-full cursor-pointer select-none items-center py-2.5 pl-8 pr-3 text-xs uppercase tracking-wider text-[#111111] outline-none hover:bg-nivora-soft focus:bg-nivora-soft data-disabled:pointer-events-none data-disabled:opacity-50",
         className
       )}
       {...props}

@@ -3,15 +3,15 @@ import { ArrowRight, Tag } from "lucide-react";
 
 export default function SaleSection() {
   return (
-    <section className="py-16 sm:py-20 bg-white border-b border-[#E2E2E2]">
+    <section className="py-16 sm:py-20 bg-white border-b border-nivora-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative overflow-hidden bg-[#111111] p-8 sm:p-14 lg:p-16 border border-[#222222]">
           {/* Subtle geometric pattern or background accent */}
-          <div className="absolute top-0 right-0 -mr-16 -mt-16 w-80 h-80 rounded-full bg-[#B6E600]/10 blur-3xl pointer-events-none" />
+          <div className="absolute top-0 right-0 -mr-16 -mt-16 w-80 h-80 rounded-full bg-nivora-lime/10 blur-3xl pointer-events-none" />
 
           <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#181818] border border-[#2A2A2A] text-[10px] font-bold uppercase tracking-widest text-[#B6E600] mb-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-nivora-dark border border-[#2A2A2A] text-[10px] font-bold uppercase tracking-widest text-nivora-lime mb-4">
                 <Tag className="h-3 w-3" />
                 LIMITED PERIOD ARCHIVE
               </div>
@@ -20,7 +20,7 @@ export default function SaleSection() {
                 WINTER SALE
               </h2>
 
-              <p className="mt-2 text-2xl sm:text-3xl font-black tracking-tight text-[#B6E600]">
+              <p className="mt-2 text-2xl sm:text-3xl font-black tracking-tight text-nivora-lime">
                 UP TO 30% OFF
               </p>
 

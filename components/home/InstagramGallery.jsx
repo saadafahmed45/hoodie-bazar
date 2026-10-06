@@ -36,7 +36,7 @@ export default function InstagramGallery() {
   ];
 
   return (
-    <section className="py-16 sm:py-20 bg-white border-b border-[#E2E2E2]">
+    <section className="py-16 sm:py-20 bg-white border-b border-nivora-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 text-center">
         <span className="text-[10px] font-bold uppercase tracking-widest text-[#888888] block mb-2">
           JOIN THE COMMUNITY
@@ -48,7 +48,7 @@ export default function InstagramGallery() {
           href="https://instagram.com"
           target="_blank"
           rel="noreferrer"
-          className="text-xs font-bold uppercase tracking-widest text-[#111111] hover:text-[#666666] transition-colors mt-1 inline-block"
+          className="text-xs font-bold uppercase tracking-widest text-[#111111] hover:text-nivora-muted transition-colors mt-1 inline-block"
         >
           @nivora.wear
         </a>
@@ -62,7 +62,7 @@ export default function InstagramGallery() {
             href="https://instagram.com"
             target="_blank"
             rel="noreferrer"
-            className="group relative aspect-square overflow-hidden bg-[#181818] block"
+            className="group relative aspect-square overflow-hidden bg-nivora-dark block"
           >
             <Image
               src={post.image}

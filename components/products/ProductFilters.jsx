@@ -26,7 +26,7 @@ export default function ProductFilters({
   return (
     <div className="space-y-8 text-[#111111]">
       {/* Header & Reset */}
-      <div className="flex items-center justify-between pb-4 border-b border-[#E2E2E2]">
+      <div className="flex items-center justify-between pb-4 border-b border-nivora-border">
         <span className="text-xs font-bold uppercase tracking-widest">
           FILTERS
         </span>
@@ -51,7 +51,7 @@ export default function ProductFilters({
             className={`block text-xs uppercase tracking-wider text-left transition-colors ${
               selectedCategory === "All"
                 ? "font-bold text-[#111111]"
-                : "text-[#666666] hover:text-[#111111]"
+                : "text-nivora-muted hover:text-[#111111]"
             }`}
           >
             All Products
@@ -64,7 +64,7 @@ export default function ProductFilters({
               className={`block text-xs uppercase tracking-wider text-left transition-colors ${
                 selectedCategory.toLowerCase() === cat.name.toLowerCase()
                   ? "font-bold text-[#111111]"
-                  : "text-[#666666] hover:text-[#111111]"
+                  : "text-nivora-muted hover:text-[#111111]"
               }`}
             >
               {cat.name}
@@ -89,7 +89,7 @@ export default function ProductFilters({
                 className={`h-9 flex items-center justify-center text-xs font-semibold uppercase tracking-wider border transition-colors ${
                   isSelected
                     ? "bg-[#111111] text-white border-[#111111]"
-                    : "border-[#E2E2E2] text-[#111111] hover:border-[#111111] bg-white"
+                    : "border-nivora-border text-[#111111] hover:border-[#111111] bg-white"
                 }`}
               >
                 {size}
@@ -120,7 +120,7 @@ export default function ProductFilters({
                 onChange={() => onSelectPriceRange(range)}
                 className="h-3.5 w-3.5 text-[#111111] accent-[#111111]"
               />
-              <span className="text-[#666666] group-hover:text-[#111111]">
+              <span className="text-nivora-muted group-hover:text-[#111111]">
                 {range.label}
               </span>
             </label>
@@ -129,7 +129,7 @@ export default function ProductFilters({
       </div>
 
       {/* Availability Filter */}
-      <div className="pt-2 border-t border-[#E2E2E2]">
+      <div className="pt-2 border-t border-nivora-border">
         <label className="flex items-center gap-2.5 text-xs font-bold uppercase tracking-wider cursor-pointer">
           <Checkbox
             checked={inStockOnly}

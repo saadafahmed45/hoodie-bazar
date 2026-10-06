@@ -9,7 +9,7 @@ export default function EditorialSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 items-center">
           {/* Left Editorial Copy */}
           <div className="lg:col-span-6 p-8 sm:p-14 lg:p-20 z-10">
-            <span className="text-[10px] font-bold uppercase tracking-widest text-[#B6E600] block mb-4">
+            <span className="text-[10px] font-bold uppercase tracking-widest text-nivora-lime block mb-4">
               EDITORIAL CAMPAIGN &bull; VOLUME 01
             </span>
 
@@ -19,7 +19,7 @@ export default function EditorialSection() {
               <span className="text-white/80">ESSENTIALS</span>
             </h2>
 
-            <p className="mt-4 text-base sm:text-lg font-bold uppercase tracking-wider text-[#B6E600]">
+            <p className="mt-4 text-base sm:text-lg font-bold uppercase tracking-wider text-nivora-lime">
               Everyday layers. Elevated.
             </p>
 
@@ -43,7 +43,7 @@ export default function EditorialSection() {
               </Link>
             </div>
 
-            <div className="mt-12 pt-6 border-t border-[#222222] flex items-center gap-8 text-[11px] uppercase tracking-wider text-[#666666]">
+            <div className="mt-12 pt-6 border-t border-[#222222] flex items-center gap-8 text-[11px] uppercase tracking-wider text-nivora-muted">
               <div>
                 <strong className="text-white block font-mono text-sm">480 GSM</strong>
                 <span>Heavyweight Cotton</span>
@@ -60,7 +60,7 @@ export default function EditorialSection() {
           </div>
 
           {/* Right Editorial Visual */}
-          <div className="lg:col-span-6 relative aspect-[4/5] lg:aspect-auto lg:h-[640px] w-full bg-[#181818]">
+          <div className="lg:col-span-6 relative aspect-4/5 lg:aspect-auto lg:h-160 w-full bg-nivora-dark">
             <Image
               src="https://images.unsplash.com/photo-1517445312882-bc9910d016b7?auto=format&fit=crop&w=1200&q=85"
               alt="The Winter Essentials Editorial"
@@ -68,7 +68,7 @@ export default function EditorialSection() {
               className="object-cover object-center filter contrast-[1.08]"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent lg:hidden" />
+            <div className="absolute inset-0 bg-linear-to-t from-[#111111] via-transparent to-transparent lg:hidden" />
           </div>
         </div>
       </div>

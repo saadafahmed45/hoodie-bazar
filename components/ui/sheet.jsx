@@ -83,7 +83,7 @@ SheetTitle.displayName = DialogPrimitive.Title.displayName;
 const SheetDescription = React.forwardRef(({ className, ...props }, ref) => (
   <DialogPrimitive.Description
     ref={ref}
-    className={cn("text-xs text-[#666666]", className)}
+    className={cn("text-xs text-nivora-muted", className)}
     {...props}
   />
 ));

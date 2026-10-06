@@ -35,7 +35,7 @@ export default function Footer() {
             <span className="text-3xl font-black font-editorial tracking-tight uppercase text-white block">
               {BRAND_NAME}
             </span>
-            <span className="text-xs font-bold uppercase tracking-widest text-[#B6E600] mt-1 block">
+            <span className="text-xs font-bold uppercase tracking-widest text-nivora-lime mt-1 block">
               {BRAND_TAGLINE}
             </span>
             <p className="mt-3 text-xs text-[#888888] max-w-md leading-relaxed uppercase tracking-wider">
@@ -83,13 +83,13 @@ export default function Footer() {
                 href="https://wa.me/8801700000000"
                 target="_blank"
                 rel="noreferrer"
-                className="h-10 w-10 border border-[#333333] hover:border-[#B6E600] hover:text-[#B6E600] flex items-center justify-center text-white transition-colors text-xs font-bold"
+                className="h-10 w-10 border border-[#333333] hover:border-nivora-lime hover:text-nivora-lime flex items-center justify-center text-white transition-colors text-xs font-bold"
                 aria-label="WhatsApp"
               >
                 WA
               </a>
             </div>
-            <p className="text-[11px] text-[#666666] uppercase tracking-wider">
+            <p className="text-[11px] text-nivora-muted uppercase tracking-wider">
               Dhaka, Bangladesh &bull; info@nivora.com
             </p>
           </div>
@@ -139,7 +139,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/sale" className="text-[#B6E600] font-bold uppercase tracking-wider hover:underline">
+                <Link href="/sale" className="text-nivora-lime font-bold uppercase tracking-wider hover:underline">
                   Winter Sale (Up to 30% Off)
                 </Link>
               </li>
@@ -217,7 +217,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/admin" className="text-[#666666] hover:text-[#B6E600] uppercase tracking-wider transition-colors">
+                <Link href="/admin" className="text-nivora-muted hover:text-nivora-lime uppercase tracking-wider transition-colors">
                   Admin Portal
                 </Link>
               </li>
@@ -233,7 +233,7 @@ export default function Footer() {
               Subscribe for VIP access to seasonal drops and exclusive discounts.
             </p>
             {subscribed ? (
-              <div className="p-3 bg-[#181818] border border-[#222222] text-[#B6E600] text-xs font-semibold uppercase tracking-wider flex items-center gap-2">
+              <div className="p-3 bg-nivora-dark border border-[#222222] text-nivora-lime text-xs font-semibold uppercase tracking-wider flex items-center gap-2">
                 <CheckCircle2 className="h-4 w-4" />
                 THANK YOU FOR SUBSCRIBING.
               </div>
@@ -245,7 +245,7 @@ export default function Footer() {
                   placeholder="ENTER YOUR EMAIL..."
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="bg-[#181818] border-[#333333] text-white placeholder:text-[#666666] text-xs uppercase h-10"
+                  className="bg-nivora-dark border-[#333333] text-white placeholder:text-nivora-muted text-xs uppercase h-10"
                 />
                 <Button
                   type="submit"
@@ -260,7 +260,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar: Copyright & Payment Methods */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#666666]">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-nivora-muted">
           <p className="uppercase tracking-wider text-[11px]">
             &copy; 2026 {BRAND_NAME}. ALL RIGHTS RESERVED. CRAFTED FOR WINTER.
           </p>
@@ -270,13 +270,13 @@ export default function Footer() {
             <span className="text-[10px] font-bold uppercase tracking-widest text-[#888888]">
               PAYMENT METHODS:
             </span>
-            <span className="px-2 py-1 bg-[#181818] border border-[#333333] text-white text-[10px] font-bold uppercase tracking-wider">
+            <span className="px-2 py-1 bg-nivora-dark border border-[#333333] text-white text-[10px] font-bold uppercase tracking-wider">
               CASH ON DELIVERY
             </span>
-            <span className="px-2 py-1 bg-[#181818] border border-[#333333] text-[#e2136e] text-[10px] font-bold uppercase tracking-wider">
+            <span className="px-2 py-1 bg-nivora-dark border border-[#333333] text-[#e2136e] text-[10px] font-bold uppercase tracking-wider">
               bKash
             </span>
-            <span className="px-2 py-1 bg-[#181818] border border-[#333333] text-[#f7941d] text-[10px] font-bold uppercase tracking-wider">
+            <span className="px-2 py-1 bg-nivora-dark border border-[#333333] text-[#f7941d] text-[10px] font-bold uppercase tracking-wider">
               Nagad
             </span>
           </div>

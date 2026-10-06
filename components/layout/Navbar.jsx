@@ -79,8 +79,8 @@ export default function Navbar() {
       <header
         className={`sticky top-0 z-40 w-full bg-white transition-all duration-300 ${
           scrolled
-            ? "border-b border-[#E2E2E2] shadow-xs py-3.5"
-            : "border-b border-[#E2E2E2] py-4"
+            ? "border-b border-nivora-border shadow-xs py-3.5"
+            : "border-b border-nivora-border py-4"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -90,7 +90,7 @@ export default function Navbar() {
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(true)}
-                className="p-1.5 -ml-1 text-[#111111] hover:text-[#666666] focus:outline-none"
+                className="p-1.5 -ml-1 text-[#111111] hover:text-nivora-muted focus:outline-none"
                 aria-label="Open mobile navigation menu"
               >
                 <Menu className="h-5 w-5" />
@@ -125,17 +125,17 @@ export default function Navbar() {
                     className={`relative text-xs font-bold uppercase tracking-wider py-1 transition-colors ${
                       isActive
                         ? "text-[#111111]"
-                        : "text-[#666666] hover:text-[#111111]"
+                        : "text-nivora-muted hover:text-[#111111]"
                     }`}
                   >
                     <span className="flex items-center gap-1.5">
                       {link.name}
                       {isSale && (
-                        <span className="h-1.5 w-1.5 rounded-full bg-[#B6E600] inline-block" />
+                        <span className="h-1.5 w-1.5 rounded-full bg-nivora-lime inline-block" />
                       )}
                     </span>
                     {isActive && (
-                      <span className="absolute bottom-0 left-0 w-full h-[2px] bg-[#111111]" />
+                      <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#111111]" />
                     )}
                   </Link>
                 );
@@ -148,7 +148,7 @@ export default function Navbar() {
               <button
                 type="button"
                 onClick={() => setSearchOpen(true)}
-                className="p-2 text-[#111111] hover:text-[#666666] transition-colors"
+                className="p-2 text-[#111111] hover:text-nivora-muted transition-colors"
                 aria-label="Open search dialog"
               >
                 <Search className="h-5 w-5" />
@@ -157,7 +157,7 @@ export default function Navbar() {
               {/* Wishlist Link */}
               <Link
                 href="/shop?filter=wishlist"
-                className="p-2 text-[#111111] hover:text-[#666666] transition-colors relative hidden sm:block"
+                className="p-2 text-[#111111] hover:text-nivora-muted transition-colors relative hidden sm:block"
                 aria-label="View wishlist"
               >
                 <Heart className="h-5 w-5" />
@@ -196,13 +196,13 @@ export default function Navbar() {
                           : "U"}
                       </div>
                     )}
-                    <ChevronDown className="h-3 w-3 text-[#666666]" />
+                    <ChevronDown className="h-3 w-3 text-nivora-muted" />
                   </button>
 
                   {/* Dropdown Menu */}
                   {userDropdownOpen && (
-                    <div className="absolute right-0 mt-2 w-56 bg-white border border-[#E2E2E2] shadow-xl py-2 z-50">
-                      <div className="px-4 py-2 border-b border-[#EEEEEE]">
+                    <div className="absolute right-0 mt-2 w-56 bg-white border border-nivora-border shadow-xl py-2 z-50">
+                      <div className="px-4 py-2 border-b border-nivora-light">
                         <p className="text-xs font-bold text-[#111111] truncate">
                           {user.displayName || "NIVORA Client"}
                         </p>
@@ -213,7 +213,7 @@ export default function Navbar() {
                         <Link
                           href="/account"
                           onClick={() => setUserDropdownOpen(false)}
-                          className="flex items-center gap-2 px-4 py-2 text-xs text-[#333333] hover:bg-[#F5F5F3] hover:text-[#111111] transition-colors"
+                          className="flex items-center gap-2 px-4 py-2 text-xs text-[#333333] hover:bg-nivora-soft hover:text-[#111111] transition-colors"
                         >
                           <User className="h-3.5 w-3.5" />
                           <span>My Account</span>
@@ -221,7 +221,7 @@ export default function Navbar() {
                         <Link
                           href="/account"
                           onClick={() => setUserDropdownOpen(false)}
-                          className="flex items-center gap-2 px-4 py-2 text-xs text-[#333333] hover:bg-[#F5F5F3] hover:text-[#111111] transition-colors"
+                          className="flex items-center gap-2 px-4 py-2 text-xs text-[#333333] hover:bg-nivora-soft hover:text-[#111111] transition-colors"
                         >
                           <Package className="h-3.5 w-3.5" />
                           <span>Orders & History</span>
@@ -229,14 +229,14 @@ export default function Navbar() {
                         <Link
                           href="/admin"
                           onClick={() => setUserDropdownOpen(false)}
-                          className="flex items-center gap-2 px-4 py-2 text-xs text-[#333333] hover:bg-[#F5F5F3] hover:text-[#111111] transition-colors"
+                          className="flex items-center gap-2 px-4 py-2 text-xs text-[#333333] hover:bg-nivora-soft hover:text-[#111111] transition-colors"
                         >
                           <ShieldCheck className="h-3.5 w-3.5" />
                           <span>Admin Portal</span>
                         </Link>
                       </div>
 
-                      <div className="pt-1 border-t border-[#EEEEEE]">
+                      <div className="pt-1 border-t border-nivora-light">
                         <button
                           type="button"
                           onClick={handleLogout}
@@ -252,7 +252,7 @@ export default function Navbar() {
               ) : (
                 <Link
                   href="/login"
-                  className="p-2 text-[#111111] hover:text-[#666666] transition-colors hidden sm:block"
+                  className="p-2 text-[#111111] hover:text-nivora-muted transition-colors hidden sm:block"
                   aria-label="Sign in"
                   title="Sign In / Register"
                 >
@@ -264,12 +264,12 @@ export default function Navbar() {
               <button
                 type="button"
                 onClick={openCart}
-                className="p-2 text-[#111111] hover:text-[#666666] transition-colors relative flex items-center"
+                className="p-2 text-[#111111] hover:text-nivora-muted transition-colors relative flex items-center"
                 aria-label="Open cart drawer"
               >
                 <ShoppingBag className="h-5 w-5" />
                 {mounted && cartCount > 0 && (
-                  <span className="absolute top-1 right-1 h-4 min-w-[16px] px-1 rounded-full bg-[#B6E600] text-[#111111] text-[9px] font-black flex items-center justify-center">
+                  <span className="absolute top-1 right-1 h-4 min-w-4 px-1 rounded-full bg-nivora-lime text-[#111111] text-[9px] font-black flex items-center justify-center">
                     {cartCount}
                   </span>
                 )}
@@ -281,9 +281,9 @@ export default function Navbar() {
 
       {/* Mobile Drawer Navigation Menu */}
       <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
-        <SheetContent side="left" className="w-[310px] p-0 flex flex-col justify-between">
+        <SheetContent side="left" className="w-77.5 p-0 flex flex-col justify-between">
           <div>
-            <SheetHeader className="p-5 border-b border-[#E2E2E2]">
+            <SheetHeader className="p-5 border-b border-nivora-border">
               <SheetTitle className="text-xl font-black font-editorial tracking-tight">
                 {BRAND_NAME}
               </SheetTitle>
@@ -293,13 +293,13 @@ export default function Navbar() {
             </SheetHeader>
 
             <nav className="p-5 space-y-4">
-              <div className="space-y-3 pb-5 border-b border-[#EEEEEE]">
+              <div className="space-y-3 pb-5 border-b border-nivora-light">
                 {NAV_LINKS.map((link) => (
                   <Link
                     key={link.name}
                     href={link.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="block text-sm font-bold uppercase tracking-wider text-[#111111] hover:text-[#666666]"
+                    className="block text-sm font-bold uppercase tracking-wider text-[#111111] hover:text-nivora-muted"
                   >
                     {link.name}
                   </Link>
@@ -307,7 +307,7 @@ export default function Navbar() {
                 <Link
                   href="/contact"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block text-sm font-bold uppercase tracking-wider text-[#111111] hover:text-[#666666]"
+                  className="block text-sm font-bold uppercase tracking-wider text-[#111111] hover:text-nivora-muted"
                 >
                   CONTACT
                 </Link>
@@ -335,10 +335,10 @@ export default function Navbar() {
             </nav>
           </div>
 
-          <div className="p-5 border-t border-[#E2E2E2] bg-[#F5F5F3] space-y-3">
+          <div className="p-5 border-t border-nivora-border bg-nivora-soft space-y-3">
             {mounted && user ? (
               <div className="space-y-2.5">
-                <div className="pb-2 border-b border-[#E2E2E2]">
+                <div className="pb-2 border-b border-nivora-border">
                   <p className="text-xs font-bold text-[#111111] truncate">
                     {user.displayName || "Client"}
                   </p>
@@ -355,7 +355,7 @@ export default function Navbar() {
                 <Link
                   href="/admin"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#666666] hover:text-[#111111] py-1"
+                  className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-nivora-muted hover:text-[#111111] py-1"
                 >
                   <ShieldCheck className="h-4 w-4" />
                   ADMIN PORTAL
@@ -385,7 +385,7 @@ export default function Navbar() {
                 <Link
                   href="/admin"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#666666] hover:text-[#111111]"
+                  className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-nivora-muted hover:text-[#111111]"
                 >
                   <ShieldCheck className="h-4 w-4" />
                   ADMIN LOGIN

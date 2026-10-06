@@ -49,7 +49,7 @@ export default function SearchModal({ open, onOpenChange }) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-2xl p-0 overflow-hidden bg-white">
-        <DialogHeader className="p-4 border-b border-[#E2E2E2]">
+        <DialogHeader className="p-4 border-b border-nivora-border">
           <DialogTitle className="sr-only">Search NIVORA</DialogTitle>
           <div className="relative flex items-center">
             <SearchIcon className="absolute left-3 h-4 w-4 text-[#888888]" />
@@ -84,7 +84,7 @@ export default function SearchModal({ open, onOpenChange }) {
               <p className="text-xs uppercase tracking-widest text-[#888888]">
                 NO PRODUCTS FOUND FOR &ldquo;{query}&rdquo;
               </p>
-              <p className="mt-2 text-xs text-[#666666]">
+              <p className="mt-2 text-xs text-nivora-muted">
                 Try searching for Hoodies, Sweaters, Jackets, or Streetwear.
               </p>
             </div>
@@ -101,9 +101,9 @@ export default function SearchModal({ open, onOpenChange }) {
                     key={product._id}
                     href={`/product/${product.slug}`}
                     onClick={handleClose}
-                    className="flex items-center gap-3 p-2 border border-[#E2E2E2] hover:border-[#111111] transition-colors group"
+                    className="flex items-center gap-3 p-2 border border-nivora-border hover:border-[#111111] transition-colors group"
                   >
-                    <div className="relative h-16 w-14 shrink-0 bg-[#F5F5F3] overflow-hidden">
+                    <div className="relative h-16 w-14 shrink-0 bg-nivora-soft overflow-hidden">
                       <Image
                         src={product.images?.[0] || "/images/placeholder.jpg"}
                         alt={product.name}
@@ -148,7 +148,7 @@ export default function SearchModal({ open, onOpenChange }) {
                       key={tag}
                       type="button"
                       onClick={() => setQuery(tag)}
-                      className="px-3 py-1.5 text-[11px] uppercase tracking-wider border border-[#E2E2E2] bg-[#F5F5F3] text-[#111111] hover:border-[#111111] transition-colors"
+                      className="px-3 py-1.5 text-[11px] uppercase tracking-wider border border-nivora-border bg-nivora-soft text-[#111111] hover:border-[#111111] transition-colors"
                     >
                       {tag}
                     </button>
