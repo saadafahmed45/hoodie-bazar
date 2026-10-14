@@ -54,14 +54,14 @@ export default function CollectionsPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
       {/* Header */}
-      <div className="mb-12 pb-6 border-b border-[#E2E2E2] text-center max-w-2xl mx-auto">
+      <div className="mb-12 pb-6 border-b border-nivora-border text-center max-w-2xl mx-auto">
         <span className="text-[10px] font-bold uppercase tracking-widest text-[#888888] block mb-2">
           CURATED CAPSULES
         </span>
         <h1 className="text-3xl sm:text-5xl font-black font-editorial tracking-tight uppercase text-[#111111]">
           COLLECTIONS
         </h1>
-        <p className="mt-2 text-xs sm:text-sm text-[#666666] uppercase tracking-wider">
+        <p className="mt-2 text-xs sm:text-sm text-nivora-muted uppercase tracking-wider">
           Explore our seasonal drops, material explorations, and streetwear silhouettes.
         </p>
       </div>
@@ -71,8 +71,8 @@ export default function CollectionsPage() {
         {COLLECTIONS_LIST.map((col, idx) => (
           <div
             key={col.slug}
-            className={`group relative overflow-hidden bg-[#181818] border border-[#E2E2E2] flex flex-col justify-end p-8 sm:p-12 ${
-              idx === 0 ? "md:col-span-2 aspect-[16/8] sm:aspect-[21/9]" : "aspect-[4/3]"
+            className={`group relative overflow-hidden bg-nivora-dark border border-nivora-border flex flex-col justify-end p-8 sm:p-12 ${
+              idx === 0 ? "md:col-span-2 aspect-16/8 sm:aspect-21/9" : "aspect-4/3"
             }`}
           >
             <Image
@@ -82,13 +82,13 @@ export default function CollectionsPage() {
               className="object-cover group-hover:scale-105 transition-transform duration-700 brightness-75 contrast-[1.08]"
               sizes="(max-width: 768px) 100vw, 50vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+            <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/30 to-transparent" />
 
             <div className="relative z-10 text-white max-w-lg">
-              <span className="text-[10px] font-bold uppercase tracking-widest text-[#B6E600] block mb-1">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-nivora-lime block mb-1">
                 {col.count}
               </span>
-              <h2 className="text-2xl sm:text-3xl font-black font-editorial tracking-tight uppercase leading-tight text-white group-hover:text-[#B6E600] transition-colors">
+              <h2 className="text-2xl sm:text-3xl font-black font-editorial tracking-tight uppercase leading-tight text-white group-hover:text-nivora-lime transition-colors">
                 {col.title}
               </h2>
               <p className="mt-2 text-xs text-[#CCCCCC] leading-relaxed uppercase tracking-wider">

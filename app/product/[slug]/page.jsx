@@ -38,7 +38,7 @@ export default async function ProductDetailPage(props) {
         <h1 className="text-3xl font-black font-editorial uppercase text-[#111111] mb-2">
           PRODUCT NOT FOUND
         </h1>
-        <p className="text-xs text-[#666666] uppercase tracking-wider mb-8">
+        <p className="text-xs text-nivora-muted uppercase tracking-wider mb-8">
           The requested garment might have sold out or been removed from the archive.
         </p>
         <Link href="/shop" className="btn-primary-lime text-xs">
@@ -85,8 +85,8 @@ export default async function ProductDetailPage(props) {
       </div>
 
       {/* YOU MAY ALSO LIKE Section */}
-      <div className="mt-20 sm:mt-28 pt-12 border-t border-[#E2E2E2]">
-        <div className="flex items-end justify-between mb-8 pb-4 border-b border-[#E2E2E2]">
+      <div className="mt-20 sm:mt-28 pt-12 border-t border-nivora-border">
+        <div className="flex items-end justify-between mb-8 pb-4 border-b border-nivora-border">
           <div>
             <span className="text-[10px] font-bold uppercase tracking-widest text-[#888888] block mb-1">
               CURATED PAIRINGS

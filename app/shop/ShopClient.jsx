@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { SlidersHorizontal, ArrowUpDown } from "lucide-react";
 import ProductCard from "@/components/products/ProductCard";
 import ProductFilters from "@/components/products/ProductFilters";
@@ -34,6 +34,12 @@ export default function ShopClient({
   const [sortBy, setSortBy] = useState("featured");
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
 
+  useEffect(() => {
+    if (initialCategory) {
+      setSelectedCategory(initialCategory);
+    }
+  }, [initialCategory]);
+
   const wishlistItems = useWishlistStore((state) => state.items);
 
   const handleToggleSize = (size) => {
@@ -60,11 +66,17 @@ export default function ShopClient({
       list = list.filter((p) => wishlistIds.includes(p._id));
     }
 
-    // Category filter
+    // Category filter (handles singular and plural matches like Sweatshirt vs Sweatshirts)
     if (selectedCategory && selectedCategory !== "All") {
-      list = list.filter(
-        (p) => p.category.toLowerCase() === selectedCategory.toLowerCase()
-      );
+      const targetBase = selectedCategory.toLowerCase().replace(/s$/, "");
+      list = list.filter((p) => {
+        if (!p.category) return false;
+        const pBase = p.category.toLowerCase().replace(/s$/, "");
+        return (
+          p.category.toLowerCase() === selectedCategory.toLowerCase() ||
+          pBase === targetBase
+        );
+      });
     }
 
     // Size filter

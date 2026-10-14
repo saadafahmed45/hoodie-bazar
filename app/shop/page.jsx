@@ -6,6 +6,8 @@ export const metadata = {
   description: "Browse the complete collection of premium oversized hoodies, crewnecks, sweaters, jackets, and accessories from NIVORA.",
 };
 
+export const dynamic = "force-dynamic";
+
 export default async function ShopPage(props) {
   const searchParams = await props.searchParams;
   const initialCategory = searchParams?.category || "All";

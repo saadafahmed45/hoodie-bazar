@@ -190,7 +190,7 @@ export default function ProductCarousel({
 
       {/* Category Tabs (if enabled and more than 1 category exists) */}
       {showCategoryTabs && categoryList.length > 1 && (
-        <div className="mb-6 flex items-center gap-2 overflow-x-auto pb-2 pt-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <div className="mb-6 flex items-center gap-2 overflow-x-auto pb-2 pt-1 [-ms-overflow-style:none] scrollbar-none [&::-webkit-scrollbar]:hidden">
           {categoryList.map((cat) => {
             const isActive =
               selectedCategory.toLowerCase() === cat.toLowerCase();
@@ -216,7 +216,7 @@ export default function ProductCarousel({
                 className={`shrink-0 inline-flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer ${
                   isActive
                     ? "bg-[#111111] text-white shadow-xs"
-                    : "bg-white text-[#666666] border border-nivora-border hover:border-[#111111] hover:text-[#111111]"
+                    : "bg-white text-nivora-muted border border-nivora-border hover:border-[#111111] hover:text-[#111111]"
                 }`}
               >
                 <span>{cat}</span>
@@ -270,7 +270,7 @@ export default function ProductCarousel({
         {/* Product Cards Track / Empty State */}
         {filteredProducts.length === 0 ? (
           <div className="py-14 text-center border border-dashed border-nivora-border bg-nivora-soft/40 my-2">
-            <p className="text-xs uppercase tracking-wider text-[#666666] font-bold">
+            <p className="text-xs uppercase tracking-wider text-nivora-muted font-bold">
               No products found in {selectedCategory}.
             </p>
             <button
@@ -284,7 +284,7 @@ export default function ProductCarousel({
         ) : (
           <div
             ref={scrollRef}
-            className="flex gap-4 sm:gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-3 pt-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            className="flex gap-4 sm:gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-3 pt-1 [-ms-overflow-style:none] scrollbar-none [&::-webkit-scrollbar]:hidden"
           >
             {filteredProducts.map((product, idx) => (
               <div

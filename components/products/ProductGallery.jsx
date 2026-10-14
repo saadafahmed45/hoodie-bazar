@@ -17,10 +17,10 @@ export default function ProductGallery({ images = [], name = "Product" }) {
               key={index}
               type="button"
               onClick={() => setSelectedImage(img)}
-              className={`relative h-20 w-16 sm:h-24 sm:w-20 shrink-0 overflow-hidden bg-[#F5F5F3] border transition-all ${
+              className={`relative h-20 w-16 sm:h-24 sm:w-20 shrink-0 overflow-hidden bg-nivora-soft border transition-all ${
                 isSelected
                   ? "border-[#111111] ring-1 ring-[#111111]"
-                  : "border-[#E2E2E2] opacity-70 hover:opacity-100"
+                  : "border-nivora-border opacity-70 hover:opacity-100"
               }`}
             >
               <Image
@@ -36,7 +36,7 @@ export default function ProductGallery({ images = [], name = "Product" }) {
       </div>
 
       {/* Main Feature Image */}
-      <div className="relative aspect-[3/4] w-full overflow-hidden bg-[#F5F5F3] border border-[#E2E2E2]">
+      <div className="relative aspect-3/4 w-full overflow-hidden bg-nivora-soft border border-nivora-border">
         <Image
           src={selectedImage}
           alt={name}

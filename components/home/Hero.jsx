@@ -14,7 +14,7 @@ export default function Hero() {
           <div className="lg:col-span-5 flex flex-col justify-between p-8 sm:p-12 lg:p-16 z-10 text-white">
             {/* Top Label */}
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#181818] border border-[#2A2A2A] text-[10px] font-bold uppercase tracking-widest text-[#B6E600] mb-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-nivora-dark border border-[#2A2A2A] text-[10px] font-bold uppercase tracking-widest text-nivora-lime mb-6">
                 <Sparkles className="h-3 w-3" />
                 NEW WINTER COLLECTION 2026
               </div>
@@ -23,7 +23,7 @@ export default function Hero() {
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black font-editorial tracking-tight uppercase leading-[0.95] text-white">
                 WINTER.
                 <br />
-                <span className="text-[#B6E600]">REFINED.</span>
+                <span className="text-nivora-lime">REFINED.</span>
               </h1>
 
               {/* Supporting Subhead */}
@@ -61,7 +61,7 @@ export default function Hero() {
           </div>
 
           {/* Right Cinematic Lifestyle Image Panel */}
-          <div className="lg:col-span-7 relative min-h-[400px] lg:min-h-full w-full bg-[#181818] overflow-hidden">
+          <div className="lg:col-span-7 relative min-h-100 lg:min-h-full w-full bg-nivora-dark overflow-hidden">
             <Image
               src="https://images.pexels.com/photos/31826316/pexels-photo-31826316.jpeg"
               alt="NIVORA Winter Streetwear Campaign"
@@ -71,11 +71,11 @@ export default function Hero() {
               sizes="(max-width: 1024px) 100vw, 58vw"
             />
             {/* Subtle Gradient Overlays for High Contrast & Editorial Mood */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#111111]/80 via-transparent to-transparent lg:bg-gradient-to-r lg:from-[#111111] lg:via-transparent lg:to-transparent" />
+            <div className="absolute inset-0 bg-linear-to-t from-[#111111]/80 via-transparent to-transparent lg:bg-linear-to-r lg:from-[#111111] lg:via-transparent lg:to-transparent" />
 
             {/* Floating Editorial Badge */}
             <div className="absolute bottom-6 right-6 z-10 hidden sm:flex items-center gap-3 bg-[#111111]/85 backdrop-blur-md border border-[#333333] px-4 py-2 text-white">
-              <div className="h-2 w-2 rounded-full bg-[#B6E600] animate-pulse" />
+              <div className="h-2 w-2 rounded-full bg-nivora-lime animate-pulse" />
               <span className="text-[10px] font-bold uppercase tracking-widest">
                 HEAVYWEIGHT 480 GSM FLEECE
               </span>

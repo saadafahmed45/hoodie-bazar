@@ -75,7 +75,7 @@ export default function ProductPurchaseArea({ product }) {
   return (
     <div className="flex flex-col space-y-6">
       {/* Category & Name */}
-      <div className="border-b border-[#E2E2E2] pb-6">
+      <div className="border-b border-nivora-border pb-6">
         <div className="flex items-center justify-between mb-2">
           <span className="text-xs uppercase tracking-widest text-[#888888]">
             {product.category}
@@ -117,7 +117,7 @@ export default function ProductPurchaseArea({ product }) {
         <div>
           <div className="flex items-center justify-between mb-2.5">
             <span className="text-xs font-bold uppercase tracking-wider text-[#111111]">
-              COLOR: <span className="font-normal text-[#666666]">{selectedColor}</span>
+              COLOR: <span className="font-normal text-nivora-muted">{selectedColor}</span>
             </span>
           </div>
           <div className="flex flex-wrap gap-2">
@@ -131,7 +131,7 @@ export default function ProductPurchaseArea({ product }) {
                   className={`px-3.5 py-2 text-xs font-semibold uppercase tracking-wider border transition-all ${
                     isSelected
                       ? "border-[#111111] bg-[#111111] text-white"
-                      : "border-[#E2E2E2] bg-white text-[#111111] hover:border-[#111111]"
+                      : "border-nivora-border bg-white text-[#111111] hover:border-[#111111]"
                   }`}
                 >
                   {color}
@@ -147,7 +147,7 @@ export default function ProductPurchaseArea({ product }) {
         <div>
           <div className="flex items-center justify-between mb-2.5">
             <span className="text-xs font-bold uppercase tracking-wider text-[#111111]">
-              SIZE: <span className="font-normal text-[#666666]">{selectedSize}</span>
+              SIZE: <span className="font-normal text-nivora-muted">{selectedSize}</span>
             </span>
 
             {/* Size Guide Modal Trigger */}
@@ -166,16 +166,16 @@ export default function ProductPurchaseArea({ product }) {
                   <DialogTitle>NIVORA SIZING CHART (INCHES)</DialogTitle>
                 </DialogHeader>
                 <div className="mt-4 overflow-x-auto text-xs">
-                  <table className="w-full text-left border-collapse border border-[#E2E2E2]">
+                  <table className="w-full text-left border-collapse border border-nivora-border">
                     <thead>
-                      <tr className="bg-[#F5F5F3] border-b border-[#E2E2E2]">
+                      <tr className="bg-nivora-soft border-b border-nivora-border">
                         <th className="p-2.5 font-bold uppercase">Size</th>
                         <th className="p-2.5 font-bold uppercase">Chest</th>
                         <th className="p-2.5 font-bold uppercase">Length</th>
                         <th className="p-2.5 font-bold uppercase">Sleeve</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-[#E2E2E2]">
+                    <tbody className="divide-y divide-nivora-border">
                       <tr>
                         <td className="p-2.5 font-bold">S</td>
                         <td className="p-2.5">42 - 44&quot;</td>
@@ -208,7 +208,7 @@ export default function ProductPurchaseArea({ product }) {
                       </tr>
                     </tbody>
                   </table>
-                  <p className="mt-4 text-[11px] text-[#666666] leading-relaxed">
+                  <p className="mt-4 text-[11px] text-nivora-muted leading-relaxed">
                     *Our silhouettes feature a relaxed boxy fit. If you prefer a tailored look, we recommend sizing down one size.
                   </p>
                 </div>
@@ -227,7 +227,7 @@ export default function ProductPurchaseArea({ product }) {
                   className={`h-11 flex items-center justify-center text-xs font-bold uppercase tracking-wider border transition-all ${
                     isSelected
                       ? "border-[#111111] bg-[#111111] text-white"
-                      : "border-[#E2E2E2] bg-white text-[#111111] hover:border-[#111111]"
+                      : "border-nivora-border bg-white text-[#111111] hover:border-[#111111]"
                   }`}
                 >
                   {size}
@@ -242,11 +242,11 @@ export default function ProductPurchaseArea({ product }) {
       <div className="space-y-3 pt-2">
         <div className="flex gap-3">
           {/* Quantity Selector */}
-          <div className="flex items-center border border-[#E2E2E2] h-12 w-32 shrink-0">
+          <div className="flex items-center border border-nivora-border h-12 w-32 shrink-0">
             <button
               type="button"
               onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-              className="w-10 h-full flex items-center justify-center text-[#111111] hover:bg-[#F5F5F3]"
+              className="w-10 h-full flex items-center justify-center text-[#111111] hover:bg-nivora-soft"
             >
               -
             </button>
@@ -256,7 +256,7 @@ export default function ProductPurchaseArea({ product }) {
             <button
               type="button"
               onClick={() => setQuantity((q) => q + 1)}
-              className="w-10 h-full flex items-center justify-center text-[#111111] hover:bg-[#F5F5F3]"
+              className="w-10 h-full flex items-center justify-center text-[#111111] hover:bg-nivora-soft"
             >
               +
             </button>
@@ -276,7 +276,7 @@ export default function ProductPurchaseArea({ product }) {
           <button
             type="button"
             onClick={handleWishlistToggle}
-            className="h-12 w-12 border border-[#E2E2E2] flex items-center justify-center hover:border-[#111111] transition-colors"
+            className="h-12 w-12 border border-nivora-border flex items-center justify-center hover:border-[#111111] transition-colors"
             aria-label="Wishlist toggle"
           >
             <Heart
@@ -299,7 +299,7 @@ export default function ProductPurchaseArea({ product }) {
       </div>
 
       {/* Trust Highlights */}
-      <div className="grid grid-cols-2 gap-3 py-4 border-y border-[#E2E2E2] text-xs text-[#666666]">
+      <div className="grid grid-cols-2 gap-3 py-4 border-y border-nivora-border text-xs text-nivora-muted">
         <div className="flex items-center gap-2">
           <Truck className="h-4 w-4 text-[#111111]" />
           <span>Free shipping over ৳{FREE_SHIPPING_THRESHOLD}</span>
@@ -315,7 +315,7 @@ export default function ProductPurchaseArea({ product }) {
         <AccordionItem value="description">
           <AccordionTrigger>DESCRIPTION</AccordionTrigger>
           <AccordionContent>
-            <p className="text-xs text-[#666666] leading-relaxed">
+            <p className="text-xs text-nivora-muted leading-relaxed">
               {product.description}
             </p>
           </AccordionContent>
@@ -325,13 +325,13 @@ export default function ProductPurchaseArea({ product }) {
           <AccordionTrigger>DETAILS & SPECIFICATIONS</AccordionTrigger>
           <AccordionContent>
             {product.details && product.details.length > 0 ? (
-              <ul className="list-disc pl-4 space-y-1 text-xs text-[#666666]">
+              <ul className="list-disc pl-4 space-y-1 text-xs text-nivora-muted">
                 {product.details.map((detail, idx) => (
                   <li key={idx}>{detail}</li>
                 ))}
               </ul>
             ) : (
-              <p className="text-xs text-[#666666]">
+              <p className="text-xs text-nivora-muted">
                 Double needle topstitched seams, rib knit trims, and pre-washed finish.
               </p>
             )}
@@ -341,7 +341,7 @@ export default function ProductPurchaseArea({ product }) {
         <AccordionItem value="material">
           <AccordionTrigger>MATERIAL & CARE</AccordionTrigger>
           <AccordionContent>
-            <p className="text-xs text-[#666666] leading-relaxed">
+            <p className="text-xs text-nivora-muted leading-relaxed">
               <strong>Material:</strong> {product.material || "100% Combed Heavyweight Cotton"}.
               <br />
               <strong>Care:</strong> Machine wash cold inside out with like colors. Hang dry or tumble dry low. Do not bleach.
@@ -352,7 +352,7 @@ export default function ProductPurchaseArea({ product }) {
         <AccordionItem value="shipping">
           <AccordionTrigger>SHIPPING & RETURNS</AccordionTrigger>
           <AccordionContent>
-            <p className="text-xs text-[#666666] leading-relaxed">
+            <p className="text-xs text-nivora-muted leading-relaxed">
               <strong>Inside Dhaka:</strong> 24–48 hours delivery (৳80).
               <br />
               <strong>Outside Dhaka:</strong> 2–4 business days delivery (৳130).
