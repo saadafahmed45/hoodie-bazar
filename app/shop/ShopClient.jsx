@@ -21,7 +21,12 @@ import {
 import { Button } from "@/components/ui/button";
 import { useWishlistStore } from "@/store/wishlist-store";
 
-export default function ShopClient({ initialProducts = [], initialCategory = "All", initialFilter = "" }) {
+export default function ShopClient({
+  initialProducts = [],
+  initialCategories = [],
+  initialCategory = "All",
+  initialFilter = "",
+}) {
   const [selectedCategory, setSelectedCategory] = useState(initialCategory);
   const [selectedSizes, setSelectedSizes] = useState([]);
   const [selectedPriceRange, setSelectedPriceRange] = useState({ min: null, max: null });
@@ -149,6 +154,7 @@ export default function ShopClient({ initialProducts = [], initialCategory = "Al
                 </SheetTitle>
               </SheetHeader>
               <ProductFilters
+                categories={initialCategories}
                 selectedCategory={selectedCategory}
                 onSelectCategory={(cat) => {
                   setSelectedCategory(cat);
@@ -187,6 +193,7 @@ export default function ShopClient({ initialProducts = [], initialCategory = "Al
         {/* Desktop Filter Sidebar */}
         <aside className="hidden lg:block lg:col-span-1">
           <ProductFilters
+            categories={initialCategories}
             selectedCategory={selectedCategory}
             onSelectCategory={setSelectedCategory}
             selectedSizes={selectedSizes}
@@ -230,8 +237,8 @@ export default function ShopClient({ initialProducts = [], initialCategory = "Al
             </div>
           ) : (
             <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-3 gap-4 sm:gap-6">
-              {filteredProducts.map((product) => (
-                <ProductCard key={product._id} product={product} />
+              {filteredProducts.map((product, idx) => (
+                <ProductCard key={product._id} product={product} priority={idx < 4} />
               ))}
             </div>
           )}

@@ -16,6 +16,7 @@ import {
   ChevronDown,
   Package,
   ShieldCheck,
+  Truck,
 } from "lucide-react";
 import { BRAND_NAME, NAV_LINKS, CATEGORIES } from "@/lib/constants";
 import { useCartStore } from "@/store/cart-store";
@@ -39,7 +40,19 @@ export default function Navbar() {
 
   const { user, logout } = useAuth();
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
+  const [categories, setCategories] = useState(CATEGORIES);
   const userDropdownRef = useRef(null);
+
+  useEffect(() => {
+    fetch("/api/categories")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.success && Array.isArray(data?.categories) && data.categories.length > 0) {
+          setCategories(data.categories);
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   useEffect(() => {
     setUserDropdownOpen(false);
@@ -227,6 +240,14 @@ export default function Navbar() {
                           <span>Orders & History</span>
                         </Link>
                         <Link
+                          href="/track-order"
+                          onClick={() => setUserDropdownOpen(false)}
+                          className="flex items-center gap-2 px-4 py-2 text-xs text-[#333333] hover:bg-nivora-soft hover:text-[#111111] transition-colors"
+                        >
+                          <Truck className="h-3.5 w-3.5" />
+                          <span>Track Order</span>
+                        </Link>
+                        <Link
                           href="/admin"
                           onClick={() => setUserDropdownOpen(false)}
                           className="flex items-center gap-2 px-4 py-2 text-xs text-[#333333] hover:bg-nivora-soft hover:text-[#111111] transition-colors"
@@ -319,10 +340,10 @@ export default function Navbar() {
                   SHOP BY CATEGORY
                 </p>
                 <div className="space-y-2.5">
-                  {CATEGORIES.map((cat) => (
+                  {categories.map((cat) => (
                     <Link
-                      key={cat.slug}
-                      href={`/shop?category=${cat.name}`}
+                      key={cat._id || cat.slug || cat.name}
+                      href={`/shop?category=${encodeURIComponent(cat.name)}`}
                       onClick={() => setMobileMenuOpen(false)}
                       className="flex items-center justify-between text-xs uppercase tracking-wider text-[#555555] hover:text-[#111111]"
                     >
@@ -353,6 +374,14 @@ export default function Navbar() {
                   MY ACCOUNT & ORDERS
                 </Link>
                 <Link
+                  href="/track-order"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#111111] py-1"
+                >
+                  <Truck className="h-4 w-4" />
+                  TRACK ORDER
+                </Link>
+                <Link
                   href="/admin"
                   onClick={() => setMobileMenuOpen(false)}
                   className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-nivora-muted hover:text-[#111111] py-1"
@@ -374,6 +403,14 @@ export default function Navbar() {
               </div>
             ) : (
               <div className="space-y-2">
+                <Link
+                  href="/track-order"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#111111]"
+                >
+                  <Truck className="h-4 w-4" />
+                  TRACK ORDER
+                </Link>
                 <Link
                   href="/login"
                   onClick={() => setMobileMenuOpen(false)}

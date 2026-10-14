@@ -8,12 +8,15 @@ import EditorialSection from "@/components/home/EditorialSection";
 import SaleSection from "@/components/home/SaleSection";
 import InstagramGallery from "@/components/home/InstagramGallery";
 import NewsletterSection from "@/components/home/NewsletterSection";
-import { getProducts } from "@/lib/db";
+import { getProducts, getCategories } from "@/lib/db";
 
 export const revalidate = 60;
 
 export default async function HomePage() {
-  const products = await getProducts({}, { createdAt: -1 });
+  const [products, categories] = await Promise.all([
+    getProducts({}, { createdAt: -1 }),
+    getCategories(),
+  ]);
 
   return (
     <div className="w-full min-h-screen bg-white">
@@ -24,10 +27,10 @@ export default async function HomePage() {
       <BenefitsBar />
 
       {/* 3. Shop by Category */}
-      <CategorySection />
+      <CategorySection categories={categories} />
 
       {/* 4. New Arrivals */}
-      <NewArrivalsSection products={products} />
+      <NewArrivalsSection products={products} categories={categories} />
 
       {/* 5. Promotional Banners */}
       <PromoBanner />

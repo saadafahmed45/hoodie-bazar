@@ -66,7 +66,7 @@ export default function CheckoutPage() {
         <h1 className="text-2xl font-black font-editorial uppercase mb-2">
           YOUR CART IS EMPTY
         </h1>
-        <p className="text-xs text-[#666666] uppercase tracking-wider mb-6">
+        <p className="text-xs text-nivora-muted uppercase tracking-wider mb-6">
           Please add items to your cart before proceeding to checkout.
         </p>
         <Button variant="lime" asChild>
@@ -134,14 +134,15 @@ export default function CheckoutPage() {
 
       // Order created successfully!
       const order = data.order;
+      const orderId = order.orderId || order._id;
       clearCart();
       toast.success("Order placed successfully!");
 
-      // Navigate to order success page with details in query params or session
+      // Navigate to order success page with details in query params
       const queryParams = new URLSearchParams({
-        id: order._id,
+        id: orderId,
         name: order.customer.name,
-        total: order.total,
+        total: String(order.total),
         payment: order.paymentMethod,
         district: order.customer.district,
       });
@@ -158,7 +159,7 @@ export default function CheckoutPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
       {/* Header */}
-      <div className="mb-10 pb-6 border-b border-[#E2E2E2]">
+      <div className="mb-10 pb-6 border-b border-nivora-border">
         <span className="text-[10px] font-bold uppercase tracking-widest text-[#888888] block mb-1">
           CHECKOUT
         </span>
@@ -180,7 +181,7 @@ export default function CheckoutPage() {
 
             {/* User Account Banner */}
             {user ? (
-              <div className="p-3.5 bg-[#F5F5F3] border border-[#E2E2E2] flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
+              <div className="p-3.5 bg-nivora-soft border border-nivora-border flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
                 <span className="text-[#555555]">
                   Signed in as <strong className="text-[#111111]">{user.displayName || user.email}</strong>
                 </span>
@@ -189,8 +190,8 @@ export default function CheckoutPage() {
                 </span>
               </div>
             ) : (
-              <div className="p-3.5 bg-[#F9F9F8] border border-[#E2E2E2] flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
-                <span className="text-[#666666]">Have a NIVORA account?</span>
+              <div className="p-3.5 bg-[#F9F9F8] border border-nivora-border flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
+                <span className="text-nivora-muted">Have a NIVORA account?</span>
                 <Link
                   href="/login?redirect=/checkout"
                   className="font-bold text-[#111111] hover:underline uppercase text-[11px] tracking-wider"
@@ -201,8 +202,8 @@ export default function CheckoutPage() {
             )}
 
             {/* Delivery Details */}
-            <div className="border border-[#E2E2E2] p-6 space-y-4 bg-white">
-              <h2 className="text-xs font-bold uppercase tracking-widest text-[#111111] pb-3 border-b border-[#E2E2E2]">
+            <div className="border border-nivora-border p-6 space-y-4 bg-white">
+              <h2 className="text-xs font-bold uppercase tracking-widest text-[#111111] pb-3 border-b border-nivora-border">
                 1. DELIVERY ADDRESS (BANGLADESH)
               </h2>
 
@@ -270,7 +271,7 @@ export default function CheckoutPage() {
                   placeholder="House number, Road number, Sector, Landmark"
                   value={form.address}
                   onChange={(e) => setForm({ ...form, address: e.target.value })}
-                  className="flex w-full bg-white px-3.5 py-2 text-sm text-[#111111] border border-[#E2E2E2] placeholder:text-[#888888] focus:outline-none focus:border-[#111111] focus:ring-1 focus:ring-[#111111]"
+                  className="flex w-full bg-white px-3.5 py-2 text-sm text-[#111111] border border-nivora-border placeholder:text-[#888888] focus:outline-none focus:border-[#111111] focus:ring-1 focus:ring-[#111111]"
                 />
               </div>
 
@@ -286,14 +287,14 @@ export default function CheckoutPage() {
             </div>
 
             {/* Payment Method */}
-            <div className="border border-[#E2E2E2] p-6 space-y-4 bg-white">
-              <h2 className="text-xs font-bold uppercase tracking-widest text-[#111111] pb-3 border-b border-[#E2E2E2]">
+            <div className="border border-nivora-border p-6 space-y-4 bg-white">
+              <h2 className="text-xs font-bold uppercase tracking-widest text-[#111111] pb-3 border-b border-nivora-border">
                 2. PAYMENT METHOD
               </h2>
 
               <div className="space-y-3">
                 {/* Cash on Delivery (Functional) */}
-                <label className="flex items-start gap-3 p-4 border border-[#111111] bg-[#F5F5F3] cursor-pointer">
+                <label className="flex items-start gap-3 p-4 border border-[#111111] bg-nivora-soft cursor-pointer">
                   <input
                     type="radio"
                     name="payment"
@@ -306,19 +307,19 @@ export default function CheckoutPage() {
                     <span className="text-xs font-bold uppercase tracking-wider text-[#111111] block">
                       CASH ON DELIVERY (COD)
                     </span>
-                    <span className="text-xs text-[#666666] block mt-0.5">
+                    <span className="text-xs text-nivora-muted block mt-0.5">
                       Pay with cash upon delivery of your garments to your doorstep.
                     </span>
                   </div>
                 </label>
 
                 {/* Optional bKash / Nagad info badges */}
-                <div className="p-3 border border-[#E2E2E2] opacity-60 text-xs">
+                <div className="p-3 border border-nivora-border opacity-60 text-xs">
                   <div className="flex items-center justify-between">
                     <span className="font-bold text-[#e2136e] uppercase tracking-wider">
                       bKash / Nagad Online
                     </span>
-                    <span className="text-[10px] uppercase tracking-widest bg-[#EEEEEE] px-2 py-0.5 font-bold">
+                    <span className="text-[10px] uppercase tracking-widest bg-nivora-light px-2 py-0.5 font-bold">
                       AVAILABLE WITH COURIER
                     </span>
                   </div>
@@ -332,20 +333,20 @@ export default function CheckoutPage() {
 
           {/* Right: Order Summary (5 cols) */}
           <div className="lg:col-span-5">
-            <div className="border border-[#E2E2E2] bg-[#F5F5F3] p-6 sticky top-28 space-y-6">
-              <h2 className="text-xs font-bold uppercase tracking-widest text-[#111111] pb-3 border-b border-[#E2E2E2]">
+            <div className="border border-nivora-border bg-nivora-soft p-6 sticky top-28 space-y-6">
+              <h2 className="text-xs font-bold uppercase tracking-widest text-[#111111] pb-3 border-b border-nivora-border">
                 ORDER SUMMARY ({items.length} ITEMS)
               </h2>
 
               {/* Items Preview */}
-              <div className="max-h-60 overflow-y-auto space-y-3 divide-y divide-[#E2E2E2] pr-1">
+              <div className="max-h-60 overflow-y-auto space-y-3 divide-y divide-nivora-border pr-1">
                 {items.map((item) => (
                   <div
                     key={`${item.productId}-${item.size}-${item.color}`}
                     className="pt-3 first:pt-0 flex items-center justify-between gap-3 text-xs"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="relative h-14 w-12 shrink-0 bg-white border border-[#E2E2E2] overflow-hidden">
+                      <div className="relative h-14 w-12 shrink-0 bg-white border border-nivora-border overflow-hidden">
                         <Image
                           src={item.image || "/images/placeholder.jpg"}
                           alt={item.name}
@@ -358,7 +359,7 @@ export default function CheckoutPage() {
                         <h4 className="font-bold uppercase tracking-wider text-[#111111] line-clamp-1">
                           {item.name}
                         </h4>
-                        <p className="text-[11px] text-[#666666] uppercase">
+                        <p className="text-[11px] text-nivora-muted uppercase">
                           {item.size} &bull; {item.color} &times; {item.quantity}
                         </p>
                       </div>
@@ -371,12 +372,12 @@ export default function CheckoutPage() {
               </div>
 
               {/* Breakdown */}
-              <div className="pt-4 border-t border-[#E2E2E2] space-y-2 text-xs uppercase tracking-wider">
-                <div className="flex justify-between text-[#666666]">
+              <div className="pt-4 border-t border-nivora-border space-y-2 text-xs uppercase tracking-wider">
+                <div className="flex justify-between text-nivora-muted">
                   <span>Subtotal</span>
                   <span className="font-semibold text-[#111111]">{formatPrice(subtotal)}</span>
                 </div>
-                <div className="flex justify-between text-[#666666]">
+                <div className="flex justify-between text-nivora-muted">
                   <span>
                     Delivery ({isDhaka ? "Inside Dhaka" : "Outside Dhaka"})
                   </span>
@@ -385,14 +386,14 @@ export default function CheckoutPage() {
                   </span>
                 </div>
                 {deliveryCharge === 0 && (
-                  <p className="text-[10px] text-[#B6E600] font-bold">
+                  <p className="text-[10px] text-nivora-lime font-bold">
                     * FREE SHIPPING APPLIED
                   </p>
                 )}
               </div>
 
               {/* Total */}
-              <div className="pt-4 border-t border-[#E2E2E2] flex justify-between items-baseline">
+              <div className="pt-4 border-t border-nivora-border flex justify-between items-baseline">
                 <span className="text-xs font-bold uppercase tracking-widest text-[#111111]">
                   TOTAL AMOUNT
                 </span>

@@ -14,7 +14,7 @@ export default function AboutPage() {
       {/* Editorial Hero */}
       <section className="bg-[#111111] text-white py-20 sm:py-28 border-b border-[#222222]">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <span className="text-[10px] font-bold uppercase tracking-widest text-[#B6E600] block mb-3">
+          <span className="text-[10px] font-bold uppercase tracking-widest text-nivora-lime block mb-3">
             OUR PHILOSOPHY
           </span>
           <h1 className="text-4xl sm:text-6xl font-black font-editorial tracking-tight uppercase leading-[0.95]">
@@ -31,7 +31,7 @@ export default function AboutPage() {
       {/* Story & Image */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="relative aspect-[4/5] bg-[#181818] border border-[#E2E2E2] overflow-hidden">
+          <div className="relative aspect-4/5 bg-nivora-dark border border-nivora-border overflow-hidden">
             <Image
               src="https://images.unsplash.com/photo-1509967419530-da38b4704bc6?auto=format&fit=crop&w=1200&q=85"
               alt="NIVORA Workshop & Design"
@@ -48,14 +48,14 @@ export default function AboutPage() {
             <h2 className="text-2xl sm:text-3xl font-black font-editorial tracking-tight uppercase">
               NOT JUST WARMTH. PROPORTION.
             </h2>
-            <p className="text-xs sm:text-sm text-[#666666] leading-relaxed">
+            <p className="text-xs sm:text-sm text-nivora-muted leading-relaxed">
               Mainstream winter wear often sacrifices form for function or uses lightweight synthetic blends that deteriorate after a single season. At NIVORA, every piece is sculpted from custom 400 to 500 GSM loopback cotton terry and virgin wool blends.
             </p>
-            <p className="text-xs sm:text-sm text-[#666666] leading-relaxed">
+            <p className="text-xs sm:text-sm text-nivora-muted leading-relaxed">
               We engineer double-layered seamless hoods that stand upright without drawstrings, dropped shoulders with clean draping lines, and ribbed trims calibrated to resist stretching through years of wear.
             </p>
 
-            <div className="pt-4 border-t border-[#E2E2E2] grid grid-cols-3 gap-4 text-xs uppercase tracking-wider">
+            <div className="pt-4 border-t border-nivora-border grid grid-cols-3 gap-4 text-xs uppercase tracking-wider">
               <div>
                 <strong className="text-lg font-black block font-mono text-[#111111]">480+</strong>
                 <span className="text-[#888888] text-[10px]">GSM Fleece</span>

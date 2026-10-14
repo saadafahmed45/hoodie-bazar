@@ -33,8 +33,8 @@ export default async function SalePage() {
       </div>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-        {saleProducts.map((product) => (
-          <ProductCard key={product._id} product={product} />
+        {saleProducts.map((product, idx) => (
+          <ProductCard key={product._id} product={product} priority={idx < 4} />
         ))}
       </div>
     </div>

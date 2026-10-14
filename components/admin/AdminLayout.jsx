@@ -6,6 +6,7 @@ import { usePathname, useRouter } from "next/navigation";
 import {
   LayoutDashboard,
   Package,
+  FolderTree,
   ShoppingBag,
   ExternalLink,
   LogOut,
@@ -46,24 +47,25 @@ export default function AdminLayout({ children, session }) {
   const navItems = [
     { label: "DASHBOARD", href: "/admin", icon: LayoutDashboard },
     { label: "PRODUCTS", href: "/admin/products", icon: Package },
+    { label: "CATEGORIES", href: "/admin/categories", icon: FolderTree },
     { label: "ORDERS", href: "/admin/orders", icon: ShoppingBag },
   ];
 
   return (
-    <div className="min-h-screen bg-[#F5F5F3] flex flex-col md:flex-row text-[#111111]">
+    <div className="min-h-screen bg-nivora-soft flex flex-col md:flex-row text-[#111111]">
       {/* Mobile Header */}
       <div className="md:hidden bg-[#111111] text-white p-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <span className="font-editorial font-black text-lg tracking-tight">
             {BRAND_NAME}
           </span>
-          <span className="text-[10px] bg-[#B6E600] text-[#111111] font-bold px-1.5 py-0.5">
+          <span className="text-[10px] bg-nivora-lime text-[#111111] font-bold px-1.5 py-0.5">
             ADMIN
           </span>
         </div>
         <button
           onClick={() => setSidebarOpen(!sidebarOpen)}
-          className="p-1 text-white hover:text-[#B6E600]"
+          className="p-1 text-white hover:text-nivora-lime"
         >
           {sidebarOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
@@ -82,10 +84,10 @@ export default function AdminLayout({ children, session }) {
               {BRAND_NAME}
             </span>
             <div className="flex items-center gap-2 mt-1">
-              <span className="text-[10px] font-bold uppercase tracking-widest text-[#B6E600]">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-nivora-lime">
                 ADMIN CONTROL
               </span>
-              <span className="h-1.5 w-1.5 rounded-full bg-[#B6E600]" />
+              <span className="h-1.5 w-1.5 rounded-full bg-nivora-lime" />
             </div>
           </div>
 
@@ -101,8 +103,8 @@ export default function AdminLayout({ children, session }) {
                   onClick={() => setSidebarOpen(false)}
                   className={`flex items-center gap-3 px-3.5 py-2.5 text-xs font-bold uppercase tracking-wider transition-colors ${
                     isActive
-                      ? "bg-[#222222] text-[#B6E600] border-l-2 border-[#B6E600]"
-                      : "text-[#888888] hover:text-white hover:bg-[#181818]"
+                      ? "bg-[#222222] text-nivora-lime border-l-2 border-nivora-lime"
+                      : "text-[#888888] hover:text-white hover:bg-nivora-dark"
                   }`}
                 >
                   <Icon className="h-4 w-4" />

@@ -33,16 +33,15 @@ export default function Hero() {
 
               {/* Body Copy */}
               <p className="mt-4 text-xs sm:text-sm text-[#CCCCCC] leading-relaxed max-w-md">
-                Premium winter essentials designed for comfort, confidence, and effortless everyday style. Heavyweight fleeces, minimal puffers, and architectural knits.
+                Premium winter essentials designed for comfort, confidence, and
+                effortless everyday style. Heavyweight fleeces, minimal puffers,
+                and architectural knits.
               </p>
             </div>
 
             {/* CTAs */}
             <div className="pt-8 sm:pt-12 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-              <Link
-                href="/shop"
-                className="btn-primary-lime text-center group"
-              >
+              <Link href="/shop" className="btn-primary-lime text-center group">
                 <span>SHOP WINTER COLLECTION</span>
                 <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </Link>
@@ -64,7 +63,7 @@ export default function Hero() {
           {/* Right Cinematic Lifestyle Image Panel */}
           <div className="lg:col-span-7 relative min-h-[400px] lg:min-h-full w-full bg-[#181818] overflow-hidden">
             <Image
-              src="https://images.unsplash.com/photo-1509967419530-da38b4704bc6?auto=format&fit=crop&w=1600&q=85"
+              src="https://images.pexels.com/photos/31826316/pexels-photo-31826316.jpeg"
               alt="NIVORA Winter Streetwear Campaign"
               fill
               priority
@@ -73,7 +72,7 @@ export default function Hero() {
             />
             {/* Subtle Gradient Overlays for High Contrast & Editorial Mood */}
             <div className="absolute inset-0 bg-gradient-to-t from-[#111111]/80 via-transparent to-transparent lg:bg-gradient-to-r lg:from-[#111111] lg:via-transparent lg:to-transparent" />
-            
+
             {/* Floating Editorial Badge */}
             <div className="absolute bottom-6 right-6 z-10 hidden sm:flex items-center gap-3 bg-[#111111]/85 backdrop-blur-md border border-[#333333] px-4 py-2 text-white">
               <div className="h-2 w-2 rounded-full bg-[#B6E600] animate-pulse" />

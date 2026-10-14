@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { getAdminSession } from "@/lib/auth";
-import { getProducts, createProduct } from "@/lib/db";
+import { getProducts, createProduct, deleteManyProducts } from "@/lib/db";
 
 export async function GET() {
   const session = await getAdminSession();
@@ -84,6 +84,37 @@ export async function POST(request) {
     console.error("POST /api/admin/products error:", error);
     return NextResponse.json(
       { success: false, error: "Failed to create product" },
+      { status: 500 }
+    );
+  }
+}
+
+export async function DELETE(request) {
+  const session = await getAdminSession();
+  if (!session) {
+    return NextResponse.json({ success: false, error: "Unauthorized" }, { status: 401 });
+  }
+
+  try {
+    const body = await request.json();
+    const { ids } = body;
+    if (!Array.isArray(ids) || ids.length === 0) {
+      return NextResponse.json(
+        { success: false, error: "Please provide an array of product IDs to delete" },
+        { status: 400 }
+      );
+    }
+
+    const deletedCount = await deleteManyProducts(ids);
+    return NextResponse.json({
+      success: true,
+      message: `Successfully deleted ${deletedCount} product(s)`,
+      deletedCount,
+    });
+  } catch (error) {
+    console.error("DELETE /api/admin/products bulk error:", error);
+    return NextResponse.json(
+      { success: false, error: "Failed to delete products" },
       { status: 500 }
     );
   }

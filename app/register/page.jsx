@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, Suspense } from "react";
+import { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
@@ -25,8 +25,18 @@ function RegisterForm() {
   const [googleLoading, setGoogleLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
+  useEffect(() => {
+    if (user) {
+      router.replace(redirectUrl);
+    }
+  }, [user, redirectUrl, router]);
+
   if (user) {
-    router.replace(redirectUrl);
+    return (
+      <div className="w-full max-w-md mx-auto p-12 bg-white border border-nivora-border text-center">
+        <Loader2 className="h-6 w-6 animate-spin mx-auto text-[#111111]" />
+      </div>
+    );
   }
 
   const handleRegister = async (e) => {
@@ -82,7 +92,7 @@ function RegisterForm() {
 
   return (
     <div className="w-full max-w-md mx-auto">
-      <div className="bg-white border border-[#E2E2E2] p-8 sm:p-10 shadow-sm">
+      <div className="bg-white border border-nivora-border p-8 sm:p-10 shadow-sm">
         <div className="text-center mb-8">
           <p className="text-[10px] font-bold uppercase tracking-widest text-[#888888] mb-1">
             BECOME A MEMBER
@@ -90,7 +100,7 @@ function RegisterForm() {
           <h1 className="text-2xl sm:text-3xl font-black font-editorial tracking-tight uppercase text-[#111111]">
             CREATE ACCOUNT
           </h1>
-          <p className="text-xs text-[#666666] mt-2">
+          <p className="text-xs text-nivora-muted mt-2">
             Unlock exclusive drops, order tracking, and curated winter capsules.
           </p>
         </div>
@@ -136,7 +146,7 @@ function RegisterForm() {
 
         {/* Divider */}
         <div className="relative flex items-center justify-center mb-6">
-          <div className="border-t border-[#E2E2E2] w-full" />
+          <div className="border-t border-nivora-border w-full" />
           <span className="bg-white px-3 text-[10px] font-bold uppercase tracking-widest text-[#999999] absolute">
             OR WITH EMAIL
           </span>
@@ -253,8 +263,8 @@ function RegisterForm() {
         </form>
 
         {/* Footer info */}
-        <div className="mt-8 pt-6 border-t border-[#EEEEEE] text-center">
-          <p className="text-xs text-[#666666]">
+        <div className="mt-8 pt-6 border-t border-nivora-light text-center">
+          <p className="text-xs text-nivora-muted">
             Already have an account?{" "}
             <Link
               href={`/login${redirectUrl ? `?redirect=${encodeURIComponent(redirectUrl)}` : ""}`}
@@ -274,7 +284,7 @@ export default function RegisterPage() {
     <div className="min-h-[calc(100vh-200px)] py-14 px-4 sm:px-6 flex items-center justify-center bg-[#FAFAFA]">
       <Suspense
         fallback={
-          <div className="w-full max-w-md mx-auto p-12 bg-white border border-[#E2E2E2] text-center">
+          <div className="w-full max-w-md mx-auto p-12 bg-white border border-nivora-border text-center">
             <Loader2 className="h-6 w-6 animate-spin mx-auto text-[#111111]" />
           </div>
         }

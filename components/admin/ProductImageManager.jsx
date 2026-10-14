@@ -17,7 +17,6 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
-import { confirmDelete, showSuccess } from "@/lib/swal";
 
 export default function ProductImageManager({
   images = [],
@@ -132,18 +131,26 @@ export default function ProductImageManager({
     toast.success("Image URL added to gallery");
   };
 
-  // Remove single image with Swal confirmation
-  const handleRemoveImage = async (indexToRemove) => {
+  // Remove single image directly without blocking modal
+  const handleRemoveImage = (indexToRemove) => {
+    const removedImage = images[indexToRemove];
     const isCover = indexToRemove === 0;
-    const confirmed = await confirmDelete(
-      isCover ? "Cover Image (#1)" : `Image #${indexToRemove + 1}`,
-      "This image will be removed from the product gallery."
-    );
-    if (!confirmed) return;
-
     const updated = images.filter((_, idx) => idx !== indexToRemove);
     onChange(updated);
-    showSuccess("IMAGE REMOVED", "Image has been removed from gallery.", 1500);
+
+    toast.success(
+      isCover ? "Cover image removed from gallery" : `Image #${indexToRemove + 1} removed`,
+      {
+        action: {
+          label: "Undo",
+          onClick: () => {
+            const restored = [...updated];
+            restored.splice(indexToRemove, 0, removedImage);
+            onChange(restored);
+          },
+        },
+      }
+    );
   };
 
   // Reordering: Set as Primary Cover (Index 0)
@@ -237,24 +244,44 @@ export default function ProductImageManager({
             <ImageIcon className="w-3.5 h-3.5 text-[#111111]" />
             Product Images ({images.length})
           </span>
-          <p className="text-[11px] text-[#666666]">
+          <p className="text-[11px] text-nivora-muted">
             Drag & drop files or cards to reorder. First image is the storefront cover.
           </p>
         </div>
 
-        <button
-          type="button"
-          onClick={() => setShowUrlInput(!showUrlInput)}
-          className="text-[11px] text-[#111111] font-bold uppercase underline underline-offset-4 hover:text-[#888888] flex items-center gap-1 transition-colors"
-        >
-          <LinkIcon className="w-3 h-3" />
-          {showUrlInput ? "Hide URL Input" : "Add by URL"}
-        </button>
+        <div className="flex items-center gap-3">
+          {images.length > 1 && (
+            <button
+              type="button"
+              onClick={() => {
+                const prev = [...images];
+                onChange([]);
+                toast.success("All images removed", {
+                  action: {
+                    label: "Undo",
+                    onClick: () => onChange(prev),
+                  },
+                });
+              }}
+              className="text-[11px] text-red-600 hover:text-red-700 font-bold uppercase underline underline-offset-4 cursor-pointer transition-colors"
+            >
+              Clear All
+            </button>
+          )}
+          <button
+            type="button"
+            onClick={() => setShowUrlInput(!showUrlInput)}
+            className="text-[11px] text-[#111111] font-bold uppercase underline underline-offset-4 hover:text-[#888888] flex items-center gap-1 transition-colors cursor-pointer"
+          >
+            <LinkIcon className="w-3 h-3" />
+            {showUrlInput ? "Hide URL Input" : "Add by URL"}
+          </button>
+        </div>
       </div>
 
       {/* URL Input Bar (Collapsible) */}
       {showUrlInput && (
-        <div className="p-3 bg-[#F5F5F3] border border-[#E2E2E2] flex items-center gap-2 animate-in fade-in duration-200">
+        <div className="p-3 bg-nivora-soft border border-nivora-border flex items-center gap-2 animate-in fade-in duration-200">
           <Input
             type="url"
             placeholder="https://images.unsplash.com/... or CDN link"
@@ -290,8 +317,8 @@ export default function ProductImageManager({
         onClick={() => !isUploading && fileInputRef.current?.click()}
         className={`relative border-2 border-dashed p-6 sm:p-8 text-center cursor-pointer transition-all duration-200 ${
           isDraggingOverDropzone
-            ? "border-[#111111] bg-[#B6E600]/10 scale-[1.008] ring-2 ring-[#B6E600]"
-            : "border-[#CCCCCC] bg-[#FAF9F7] hover:border-[#111111] hover:bg-[#F5F5F3]"
+            ? "border-[#111111] bg-nivora-lime/10 scale-[1.008] ring-2 ring-[#B6E600]"
+            : "border-[#CCCCCC] bg-[#FAF9F7] hover:border-[#111111] hover:bg-nivora-soft"
         }`}
       >
         <input
@@ -309,7 +336,7 @@ export default function ProductImageManager({
             <span className="text-xs font-bold uppercase tracking-wider text-[#111111]">
               Uploading image{uploadProgress.total > 1 ? "s" : ""}...
             </span>
-            <span className="text-[10px] text-[#666666]">
+            <span className="text-[10px] text-nivora-muted">
               Optimizing and storing securely
             </span>
           </div>
@@ -318,8 +345,8 @@ export default function ProductImageManager({
             <div
               className={`w-12 h-12 rounded-full flex items-center justify-center transition-colors ${
                 isDraggingOverDropzone
-                  ? "bg-[#B6E600] text-[#111111]"
-                  : "bg-white border border-[#E2E2E2] text-[#111111]"
+                  ? "bg-nivora-lime text-[#111111]"
+                  : "bg-white border border-nivora-border text-[#111111]"
               }`}
             >
               <UploadCloud className="w-6 h-6" />
@@ -328,7 +355,7 @@ export default function ProductImageManager({
             <div>
               <span className="text-xs font-bold uppercase tracking-wider text-[#111111]">
                 Drag & Drop product images here, or{" "}
-                <span className="text-[#111111] underline underline-offset-4 decoration-[#B6E600] decoration-2">
+                <span className="text-[#111111] underline underline-offset-4 decoration-nivora-lime decoration-2">
                   Browse Files
                 </span>
               </span>
@@ -343,7 +370,7 @@ export default function ProductImageManager({
       {/* Image Gallery & Reordering Grid */}
       {images.length > 0 ? (
         <div className="space-y-2">
-          <div className="flex items-center justify-between text-[11px] text-[#666666]">
+          <div className="flex items-center justify-between text-[11px] text-nivora-muted">
             <span>
               <strong className="text-[#111111] font-bold">Image Sequence</strong> (
               {images.length} item{images.length > 1 ? "s" : ""})
@@ -371,15 +398,15 @@ export default function ProductImageManager({
                   className={`group relative bg-white border transition-all duration-150 select-none overflow-hidden ${
                     isCover
                       ? "border-[#111111] ring-2 ring-[#B6E600]"
-                      : "border-[#E2E2E2] hover:border-[#111111]"
+                      : "border-nivora-border hover:border-[#111111]"
                   } ${isDragged ? "opacity-30 scale-95" : "opacity-100"} ${
                     isTarget
-                      ? "ring-2 ring-[#111111] scale-[1.03] border-l-4 border-l-[#B6E600]"
+                      ? "ring-2 ring-[#111111] scale-[1.03] border-l-4 border-l-nivora-lime"
                       : ""
                   }`}
                 >
                   {/* Aspect ratio container */}
-                  <div className="relative aspect-[3/4] w-full bg-[#F5F5F3] overflow-hidden">
+                  <div className="relative aspect-3/4 w-full bg-nivora-soft overflow-hidden">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={imgUrl}
@@ -395,7 +422,7 @@ export default function ProductImageManager({
                     {/* Order Badge */}
                     <div className="absolute top-2 right-2">
                       {isCover ? (
-                        <span className="inline-flex items-center gap-1 bg-[#B6E600] text-[#111111] font-black text-[9px] uppercase px-1.5 py-0.5 tracking-wider shadow-sm">
+                        <span className="inline-flex items-center gap-1 bg-nivora-lime text-[#111111] font-black text-[9px] uppercase px-1.5 py-0.5 tracking-wider shadow-sm">
                           <Star className="w-2.5 h-2.5 fill-current" />
                           COVER (#1)
                         </span>
@@ -409,8 +436,11 @@ export default function ProductImageManager({
                     {/* Delete button */}
                     <button
                       type="button"
-                      onClick={() => handleRemoveImage(index)}
-                      className="absolute bottom-2 right-2 p-1.5 bg-red-600/90 hover:bg-red-700 text-white rounded shadow transition-transform hover:scale-110"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleRemoveImage(index);
+                      }}
+                      className="absolute bottom-2 right-2 p-1.5 bg-red-600/90 hover:bg-red-700 text-white rounded shadow transition-all hover:scale-110 cursor-pointer"
                       title="Remove image"
                     >
                       <X className="w-3.5 h-3.5" />
@@ -418,14 +448,14 @@ export default function ProductImageManager({
                   </div>
 
                   {/* Ordering Action Buttons Bar */}
-                  <div className="p-1.5 bg-[#FAF9F7] border-t border-[#E2E2E2] flex items-center justify-between gap-1 text-[10px]">
+                  <div className="p-1.5 bg-[#FAF9F7] border-t border-nivora-border flex items-center justify-between gap-1 text-[10px]">
                     <div className="flex items-center gap-1">
                       {/* Move Left */}
                       <button
                         type="button"
                         disabled={index === 0}
                         onClick={() => handleMoveLeft(index)}
-                        className={`p-1 border border-[#E2E2E2] rounded transition-colors ${
+                        className={`p-1 border border-nivora-border rounded transition-colors ${
                           index === 0
                             ? "opacity-30 cursor-not-allowed bg-transparent text-[#999999]"
                             : "hover:bg-white hover:border-[#111111] text-[#111111]"
@@ -440,7 +470,7 @@ export default function ProductImageManager({
                         type="button"
                         disabled={index === images.length - 1}
                         onClick={() => handleMoveRight(index)}
-                        className={`p-1 border border-[#E2E2E2] rounded transition-colors ${
+                        className={`p-1 border border-nivora-border rounded transition-colors ${
                           index === images.length - 1
                             ? "opacity-30 cursor-not-allowed bg-transparent text-[#999999]"
                             : "hover:bg-white hover:border-[#111111] text-[#111111]"
@@ -456,7 +486,7 @@ export default function ProductImageManager({
                       <button
                         type="button"
                         onClick={() => handleSetCover(index)}
-                        className="px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider text-[#111111] hover:bg-[#B6E600] border border-[#CCCCCC] hover:border-[#111111] transition-all flex items-center gap-1"
+                        className="px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider text-[#111111] hover:bg-nivora-lime border border-[#CCCCCC] hover:border-[#111111] transition-all flex items-center gap-1"
                         title="Set as main cover photo"
                       >
                         <Star className="w-2.5 h-2.5" />
@@ -470,7 +500,7 @@ export default function ProductImageManager({
           </div>
         </div>
       ) : (
-        <div className="p-4 border border-dashed border-[#E2E2E2] bg-[#FAF9F7] text-center text-xs text-[#888888]">
+        <div className="p-4 border border-dashed border-nivora-border bg-[#FAF9F7] text-center text-xs text-[#888888]">
           No images uploaded yet. Drop files above or enter image URLs.
         </div>
       )}

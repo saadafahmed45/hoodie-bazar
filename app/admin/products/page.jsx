@@ -1,5 +1,5 @@
 import { getAdminSession } from "@/lib/auth";
-import { getProducts } from "@/lib/db";
+import { getProducts, getCategories } from "@/lib/db";
 import AdminLayout from "@/components/admin/AdminLayout";
 import AdminLoginForm from "@/components/admin/AdminLoginForm";
 import AdminProductsClient from "./AdminProductsClient";
@@ -15,10 +15,14 @@ export default async function AdminProductsPage() {
   }
 
   const products = await getProducts({}, { createdAt: -1 });
+  const categories = await getCategories();
 
   return (
     <AdminLayout session={session}>
-      <AdminProductsClient initialProducts={products} />
+      <AdminProductsClient
+        initialProducts={products}
+        initialCategories={categories}
+      />
     </AdminLayout>
   );
 }

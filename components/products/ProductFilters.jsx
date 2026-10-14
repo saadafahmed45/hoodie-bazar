@@ -13,6 +13,7 @@ const PRICE_RANGES = [
 ];
 
 export default function ProductFilters({
+  categories = [],
   selectedCategory,
   onSelectCategory,
   selectedSizes,
@@ -23,6 +24,9 @@ export default function ProductFilters({
   onToggleInStock,
   onReset,
 }) {
+  const displayCategories =
+    categories && categories.length > 0 ? categories : CATEGORIES;
+
   return (
     <div className="space-y-8 text-[#111111]">
       {/* Header & Reset */}
@@ -56,9 +60,9 @@ export default function ProductFilters({
           >
             All Products
           </button>
-          {CATEGORIES.map((cat) => (
+          {displayCategories.map((cat) => (
             <button
-              key={cat.slug}
+              key={cat._id || cat.slug || cat.name}
               type="button"
               onClick={() => onSelectCategory(cat.name)}
               className={`block text-xs uppercase tracking-wider text-left transition-colors ${

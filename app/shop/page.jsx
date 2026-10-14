@@ -1,4 +1,4 @@
-import { getProducts } from "@/lib/db";
+import { getProducts, getCategories } from "@/lib/db";
 import ShopClient from "./ShopClient";
 
 export const metadata = {
@@ -11,11 +11,15 @@ export default async function ShopPage(props) {
   const initialCategory = searchParams?.category || "All";
   const initialFilter = searchParams?.filter || "";
 
-  const products = await getProducts({}, { createdAt: -1 });
+  const [products, categories] = await Promise.all([
+    getProducts({}, { createdAt: -1 }),
+    getCategories(),
+  ]);
 
   return (
     <ShopClient
       initialProducts={products}
+      initialCategories={categories}
       initialCategory={initialCategory}
       initialFilter={initialFilter}
     />

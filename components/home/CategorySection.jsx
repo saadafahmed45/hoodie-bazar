@@ -1,10 +1,24 @@
-import Link from "next/image";
 import NextLink from "next/link";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { CATEGORIES } from "@/lib/constants";
 
-export default function CategorySection() {
+export default function CategorySection({ categories = [] }) {
+  const displayCategories =
+    categories && categories.length > 0 ? categories : CATEGORIES;
+
+  const count = displayCategories.length;
+  const gridClasses =
+    count === 1
+      ? "grid grid-cols-1 max-w-sm mx-auto"
+      : count === 2
+      ? "grid grid-cols-1 sm:grid-cols-2 max-w-2xl mx-auto gap-4 sm:gap-6"
+      : count === 3
+      ? "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 max-w-5xl mx-auto gap-4 sm:gap-6"
+      : count === 4
+      ? "grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6"
+      : "grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4";
+
   return (
     <section className="py-16 sm:py-20 bg-white border-b border-nivora-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -19,21 +33,28 @@ export default function CategorySection() {
           <div className="h-0.5 w-12 bg-[#111111] mx-auto mt-3" />
         </div>
 
-        {/* 5 Category Cards */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
-          {CATEGORIES.map((cat) => (
+        {/* Dynamic Category Cards Grid */}
+        <div className={gridClasses}>
+          {displayCategories.map((cat, idx) => (
             <NextLink
-              key={cat.slug}
-              href={`/shop?category=${cat.name}`}
+              key={cat._id || cat.slug || cat.name}
+              href={`/shop?category=${encodeURIComponent(cat.name)}`}
               className="group relative aspect-3/4 overflow-hidden bg-nivora-dark border border-nivora-border flex flex-col justify-end p-4 transition-all"
             >
               {/* Background Image */}
               <Image
-                src={cat.image}
+                src={cat.image || "/images/placeholder.jpg"}
                 alt={cat.name}
                 fill
+                priority={idx < 3}
                 className="object-cover group-hover:scale-110 transition-transform duration-700 brightness-90 contrast-[1.05]"
-                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
+                sizes={
+                  count <= 3
+                    ? "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    : count === 4
+                    ? "(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    : "(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
+                }
               />
 
               {/* Dark Overlay with subtle gradient */}
@@ -60,3 +81,4 @@ export default function CategorySection() {
     </section>
   );
 }
+

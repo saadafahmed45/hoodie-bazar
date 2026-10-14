@@ -10,7 +10,7 @@ import { useCartStore } from "@/store/cart-store";
 import { useWishlistStore } from "@/store/wishlist-store";
 import { toast } from "sonner";
 
-export default function ProductCard({ product }) {
+export default function ProductCard({ product, priority = false }) {
   const [hovered, setHovered] = useState(false);
   const [added, setAdded] = useState(false);
 
@@ -58,13 +58,14 @@ export default function ProductCard({ product }) {
       onMouseLeave={() => setHovered(false)}
     >
       {/* Image Container */}
-      <div className="relative aspect-[3/4] w-full overflow-hidden bg-[#F5F5F3] border border-[#E2E2E2]">
+      <div className="relative aspect-3/4 w-full overflow-hidden bg-nivora-soft border border-nivora-border">
         <Link href={`/product/${product.slug}`} className="relative block h-full w-full">
           {/* Main Image */}
           <Image
             src={primaryImage}
             alt={product.name}
             fill
+            priority={priority}
             className={`object-cover transition-all duration-500 ${
               hovered && secondaryImage !== primaryImage
                 ? "opacity-0 scale-105"
@@ -120,7 +121,7 @@ export default function ProductCard({ product }) {
           <button
             type="button"
             onClick={handleQuickAdd}
-            className="w-full h-10 bg-[#111111] text-white text-[11px] font-bold uppercase tracking-widest flex items-center justify-center gap-1.5 hover:bg-[#B6E600] hover:text-[#111111] transition-all shadow-md active:scale-98"
+            className="w-full h-10 bg-[#111111] text-white text-[11px] font-bold uppercase tracking-widest flex items-center justify-center gap-1.5 hover:bg-nivora-lime hover:text-[#111111] transition-all shadow-md active:scale-98"
           >
             {added ? (
               <>

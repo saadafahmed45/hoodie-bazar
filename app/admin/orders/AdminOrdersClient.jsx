@@ -66,7 +66,7 @@ export default function AdminOrdersClient({ initialOrders = [] }) {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="pb-6 border-b border-[#E2E2E2]">
+      <div className="pb-6 border-b border-nivora-border">
         <span className="text-[10px] font-bold uppercase tracking-widest text-[#888888]">
           FULFILLMENT & LOGISTICS
         </span>
@@ -76,7 +76,7 @@ export default function AdminOrdersClient({ initialOrders = [] }) {
       </div>
 
       {/* Orders Table */}
-      <div className="bg-white border border-[#E2E2E2] overflow-hidden">
+      <div className="bg-white border border-nivora-border overflow-hidden">
         {orders.length === 0 ? (
           <div className="p-12 text-center text-xs text-[#888888] uppercase tracking-wider">
             No orders found in the system yet.
@@ -85,7 +85,7 @@ export default function AdminOrdersClient({ initialOrders = [] }) {
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse text-xs">
               <thead>
-                <tr className="bg-[#F5F5F3] border-b border-[#E2E2E2] text-[#888888] uppercase tracking-wider text-[10px]">
+                <tr className="bg-nivora-soft border-b border-nivora-border text-[#888888] uppercase tracking-wider text-[10px]">
                   <th className="p-4 pl-6 font-bold">ORDER ID</th>
                   <th className="p-4 font-bold">CUSTOMER</th>
                   <th className="p-4 font-bold">PHONE</th>
@@ -96,7 +96,7 @@ export default function AdminOrdersClient({ initialOrders = [] }) {
                   <th className="p-4 pr-6 font-bold text-right">DETAILS</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#E2E2E2]">
+              <tbody className="divide-y divide-nivora-border">
                 {orders.map((ord) => (
                   <tr key={ord._id} className="hover:bg-[#FAF9F7] transition-colors">
                     <td className="p-4 pl-6 font-mono font-bold text-[#111111]">
@@ -108,13 +108,13 @@ export default function AdminOrdersClient({ initialOrders = [] }) {
                         {ord.customer?.district}
                       </span>
                     </td>
-                    <td className="p-4 font-mono text-[#666666]">
+                    <td className="p-4 font-mono text-nivora-muted">
                       {ord.customer?.phone}
                     </td>
                     <td className="p-4 font-bold text-[#111111]">
                       {formatPrice(ord.total)}
                     </td>
-                    <td className="p-4 uppercase text-[10px] text-[#666666]">
+                    <td className="p-4 uppercase text-[10px] text-nivora-muted">
                       {ord.paymentMethod === "CASH_ON_DELIVERY" ? "COD" : ord.paymentMethod}
                     </td>
                     <td className="p-4">
@@ -148,7 +148,7 @@ export default function AdminOrdersClient({ initialOrders = [] }) {
                       <button
                         type="button"
                         onClick={() => setSelectedOrder(ord)}
-                        className="p-1.5 border border-[#E2E2E2] hover:border-[#111111] text-[#111111] transition-colors inline-flex items-center gap-1 text-[11px] font-semibold"
+                        className="p-1.5 border border-nivora-border hover:border-[#111111] text-[#111111] transition-colors inline-flex items-center gap-1 text-[11px] font-semibold"
                       >
                         <Eye className="h-3.5 w-3.5" />
                         <span>VIEW</span>
@@ -170,7 +170,7 @@ export default function AdminOrdersClient({ initialOrders = [] }) {
         <DialogContent className="max-w-xl max-h-[85vh] overflow-y-auto bg-white p-6">
           {selectedOrder && (
             <div className="space-y-6">
-              <DialogHeader className="pb-4 border-b border-[#E2E2E2]">
+              <DialogHeader className="pb-4 border-b border-nivora-border">
                 <DialogTitle className="flex items-center justify-between">
                   <span>ORDER DETAILS</span>
                   <span className="font-mono text-xs text-[#888888]">
@@ -180,16 +180,16 @@ export default function AdminOrdersClient({ initialOrders = [] }) {
               </DialogHeader>
 
               {/* Customer Info */}
-              <div className="bg-[#F5F5F3] p-4 border border-[#E2E2E2] space-y-2 text-xs">
+              <div className="bg-nivora-soft p-4 border border-nivora-border space-y-2 text-xs">
                 <div className="flex items-center gap-2 font-bold text-[#111111] uppercase tracking-wider">
                   <User className="h-4 w-4" />
                   <span>{selectedOrder.customer?.name}</span>
                 </div>
-                <div className="flex items-center gap-2 text-[#666666]">
+                <div className="flex items-center gap-2 text-nivora-muted">
                   <Phone className="h-3.5 w-3.5" />
                   <span>{selectedOrder.customer?.phone}</span>
                 </div>
-                <div className="flex items-start gap-2 text-[#666666]">
+                <div className="flex items-start gap-2 text-nivora-muted">
                   <MapPin className="h-3.5 w-3.5 mt-0.5 shrink-0" />
                   <span>
                     {selectedOrder.customer?.address}, {selectedOrder.customer?.area}{" "}
@@ -197,7 +197,7 @@ export default function AdminOrdersClient({ initialOrders = [] }) {
                   </span>
                 </div>
                 {selectedOrder.customer?.note && (
-                  <p className="pt-2 border-t border-[#E2E2E2] text-[#888888] italic">
+                  <p className="pt-2 border-t border-nivora-border text-[#888888] italic">
                     Note: &ldquo;{selectedOrder.customer.note}&rdquo;
                   </p>
                 )}
@@ -208,11 +208,11 @@ export default function AdminOrdersClient({ initialOrders = [] }) {
                 <h4 className="text-xs font-bold uppercase tracking-wider text-[#111111] mb-3">
                   ITEMS PURCHASED ({selectedOrder.items?.length || 0})
                 </h4>
-                <div className="divide-y divide-[#E2E2E2] border border-[#E2E2E2]">
+                <div className="divide-y divide-nivora-border border border-nivora-border">
                   {selectedOrder.items?.map((item, idx) => (
                     <div key={idx} className="p-3 flex items-center justify-between gap-3 text-xs">
                       <div className="flex items-center gap-3">
-                        <div className="relative h-12 w-10 bg-[#F5F5F3] border border-[#E2E2E2] overflow-hidden shrink-0">
+                        <div className="relative h-12 w-10 bg-nivora-soft border border-nivora-border overflow-hidden shrink-0">
                           <Image
                             src={item.image || "/images/placeholder.jpg"}
                             alt={item.name}
@@ -225,7 +225,7 @@ export default function AdminOrdersClient({ initialOrders = [] }) {
                           <div className="font-bold uppercase tracking-wider text-[#111111]">
                             {item.name}
                           </div>
-                          <div className="text-[10px] text-[#666666] uppercase">
+                          <div className="text-[10px] text-nivora-muted uppercase">
                             SIZE: {item.size} &bull; COLOR: {item.color} &times; {item.quantity}
                           </div>
                         </div>
@@ -239,27 +239,27 @@ export default function AdminOrdersClient({ initialOrders = [] }) {
               </div>
 
               {/* Financial Breakdown */}
-              <div className="pt-2 border-t border-[#E2E2E2] space-y-1.5 text-xs uppercase tracking-wider">
-                <div className="flex justify-between text-[#666666]">
+              <div className="pt-2 border-t border-nivora-border space-y-1.5 text-xs uppercase tracking-wider">
+                <div className="flex justify-between text-nivora-muted">
                   <span>Subtotal</span>
                   <span className="font-semibold text-[#111111]">
                     {formatPrice(selectedOrder.subtotal)}
                   </span>
                 </div>
-                <div className="flex justify-between text-[#666666]">
+                <div className="flex justify-between text-nivora-muted">
                   <span>Delivery Charge</span>
                   <span className="font-semibold text-[#111111]">
                     {selectedOrder.deliveryCharge === 0 ? "FREE" : formatPrice(selectedOrder.deliveryCharge)}
                   </span>
                 </div>
-                <div className="flex justify-between text-sm font-black text-[#111111] pt-2 border-t border-[#E2E2E2]">
+                <div className="flex justify-between text-sm font-black text-[#111111] pt-2 border-t border-nivora-border">
                   <span>Total Due</span>
                   <span>{formatPrice(selectedOrder.total)}</span>
                 </div>
               </div>
 
               {/* Status Update from modal */}
-              <div className="pt-4 border-t border-[#E2E2E2] flex items-center justify-between">
+              <div className="pt-4 border-t border-nivora-border flex items-center justify-between">
                 <span className="text-xs font-bold uppercase tracking-wider text-[#111111]">
                   CURRENT STATUS:
                 </span>

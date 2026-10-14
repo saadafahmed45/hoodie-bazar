@@ -137,7 +137,7 @@ export async function POST(request) {
   } catch (error) {
     console.error("POST /api/orders error:", error);
     return NextResponse.json(
-      { success: false, error: "Failed to place order. Please try again." },
+      { success: false, error: error?.message || "Failed to place order. Please try again." },
       { status: 500 }
     );
   }
