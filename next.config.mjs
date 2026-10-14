@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactCompiler: true,
+  ...(process.platform !== "win32" ? { serverExternalPackages: ["mongodb"] } : {}),
   images: {
     dangerouslyAllowSVG: true,
     remotePatterns: [
