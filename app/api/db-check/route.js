@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getDb } from "@/lib/db";
+import { getDb, getLastDbError } from "@/lib/db";
 
 export const dynamic = "force-dynamic";
 
@@ -12,6 +12,7 @@ export async function GET() {
     hasMongoUri: Boolean(uri),
     targetDatabase: dbName,
     connectionStatus: "unknown",
+    dbErrors: null,
     productsCount: 0,
     categoriesCount: 0,
     categories: [],
@@ -29,9 +30,16 @@ export async function GET() {
 
   try {
     const db = await getDb();
+    const lastErrors = getLastDbError();
+    diagnostics.dbErrors = lastErrors;
+
     if (!db) {
       diagnostics.connectionStatus = "connection_failed";
-      diagnostics.error = "getDb() returned null. Most common cause: MongoDB Atlas Network Access is blocking Vercel. Please add 0.0.0.0/0 in MongoDB Atlas -> Network Access.";
+      diagnostics.error = lastErrors.lastConnectionError
+        ? `MongoDB connection failed: ${lastErrors.lastConnectionError}. Likely cause: MongoDB Atlas Network Access is blocking Vercel. Add 0.0.0.0/0 to Atlas Network Access.`
+        : lastErrors.lastMongoError
+        ? `MongoDB driver load failed: ${lastErrors.lastMongoError}`
+        : "getDb() returned null. Please verify Atlas Network Access allows 0.0.0.0/0.";
       return NextResponse.json(diagnostics, { status: 200 });
     }
 
