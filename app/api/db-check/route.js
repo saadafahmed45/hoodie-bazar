@@ -35,10 +35,8 @@ export async function GET() {
 
     if (!db) {
       diagnostics.connectionStatus = "connection_failed";
-      diagnostics.error = lastErrors.lastConnectionError
-        ? `MongoDB connection failed: ${lastErrors.lastConnectionError}. Likely cause: MongoDB Atlas Network Access is blocking Vercel. Add 0.0.0.0/0 to Atlas Network Access.`
-        : lastErrors.lastMongoError
-        ? `MongoDB driver load failed: ${lastErrors.lastMongoError}`
+      diagnostics.error = lastErrors?.lastConnectionError
+        ? `MongoDB connection error: ${lastErrors.lastConnectionError}. Likely cause: MongoDB Atlas Network Access is blocking Vercel. Please add 0.0.0.0/0 to Atlas Network Access.`
         : "getDb() returned null. Please verify Atlas Network Access allows 0.0.0.0/0.";
       return NextResponse.json(diagnostics, { status: 200 });
     }
