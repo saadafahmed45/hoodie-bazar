@@ -1,11 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { FREE_SHIPPING_THRESHOLD } from "@/lib/constants";
 
 export default function AnnouncementBar() {
+  const pathname = usePathname();
+  if (pathname?.startsWith("/admin")) return null;
   const [index, setIndex] = useState(0);
 
   const announcements = [

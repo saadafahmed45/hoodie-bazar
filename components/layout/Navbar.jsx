@@ -29,6 +29,7 @@ import CartDrawer from "@/components/cart/CartDrawer";
 
 export default function Navbar() {
   const pathname = usePathname();
+  if (pathname?.startsWith("/admin")) return null;
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
