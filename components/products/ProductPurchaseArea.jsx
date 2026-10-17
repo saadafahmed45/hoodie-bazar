@@ -23,6 +23,7 @@ import { useCartStore } from "@/store/cart-store";
 import { useWishlistStore } from "@/store/wishlist-store";
 import { toast } from "sonner";
 import { FREE_SHIPPING_THRESHOLD } from "@/lib/constants";
+import { WhatsAppIcon } from "@/components/icons/SocialIcons";
 
 export default function ProductPurchaseArea({ product }) {
   const router = useRouter();
@@ -70,6 +71,34 @@ export default function ProductPurchaseArea({ product }) {
     } else {
       toast.info(`${product.name} removed from wishlist`);
     }
+  };
+
+  const handleWhatsAppBuy = () => {
+    const rawNumber =
+      process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ||
+      process.env.NEXT_PUBLIC_WHATSAPP_PHONE ||
+      "8801700000000";
+    const phoneNumber = rawNumber.replace(/[^0-9]/g, "");
+
+    const currentUrl =
+      typeof window !== "undefined" ? window.location.href : "";
+
+    const message = `Hello NIVORA / Hoodie Bazar! 👋
+I would like to order:
+
+• Product: ${product.name}
+• Price: ${formatPrice(product.price)}
+• Size: ${selectedSize}
+• Color: ${selectedColor}
+• Quantity: ${quantity}
+• Link: ${currentUrl}
+
+Please confirm availability and help me complete my order. Thank you!`;
+
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+      message
+    )}`;
+    window.open(whatsappUrl, "_blank");
   };
 
   return (
@@ -240,25 +269,43 @@ export default function ProductPurchaseArea({ product }) {
 
       {/* Quantity & Actions */}
       <div className="space-y-3 pt-2">
-        <div className="flex gap-3">
-          {/* Quantity Selector */}
-          <div className="flex items-center border border-nivora-border h-12 w-32 shrink-0">
+        <div className="flex flex-col sm:flex-row gap-3">
+          {/* Quantity Selector + Mobile Wishlist row */}
+          <div className="flex gap-3">
+            <div className="flex items-center border border-nivora-border h-12 w-28 sm:w-28 shrink-0">
+              <button
+                type="button"
+                onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+                className="w-9 h-full flex items-center justify-center text-[#111111] hover:bg-nivora-soft"
+                aria-label="Decrease quantity"
+              >
+                -
+              </button>
+              <span className="flex-1 text-center font-bold text-sm">
+                {quantity}
+              </span>
+              <button
+                type="button"
+                onClick={() => setQuantity((q) => q + 1)}
+                className="w-9 h-full flex items-center justify-center text-[#111111] hover:bg-nivora-soft"
+                aria-label="Increase quantity"
+              >
+                +
+              </button>
+            </div>
+
+            {/* Mobile Wishlist Button */}
             <button
               type="button"
-              onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-              className="w-10 h-full flex items-center justify-center text-[#111111] hover:bg-nivora-soft"
+              onClick={handleWishlistToggle}
+              className="h-12 w-12 border border-nivora-border flex sm:hidden items-center justify-center hover:border-[#111111] transition-colors shrink-0"
+              aria-label="Wishlist toggle"
             >
-              -
-            </button>
-            <span className="flex-1 text-center font-bold text-sm">
-              {quantity}
-            </span>
-            <button
-              type="button"
-              onClick={() => setQuantity((q) => q + 1)}
-              className="w-10 h-full flex items-center justify-center text-[#111111] hover:bg-nivora-soft"
-            >
-              +
+              <Heart
+                className={`h-5 w-5 ${
+                  isFavorited ? "fill-black text-black" : "text-[#111111]"
+                }`}
+              />
             </button>
           </div>
 
@@ -272,11 +319,21 @@ export default function ProductPurchaseArea({ product }) {
             ADD TO CART
           </Button>
 
-          {/* Wishlist Button */}
+          {/* Buy Now via WhatsApp (WhatsApp Green CTA next to Add to Cart) */}
+          <button
+            type="button"
+            onClick={handleWhatsAppBuy}
+            className="flex-1 h-12 text-xs font-bold uppercase tracking-wider bg-[#25D366] hover:bg-[#20ba59] text-white flex items-center justify-center gap-2 transition-all px-3 shadow-xs"
+          >
+            <WhatsAppIcon className="h-4 w-4 shrink-0 fill-current" />
+            <span className="truncate">BUY NOW VIA WHATSAPP</span>
+          </button>
+
+          {/* Desktop Wishlist Button */}
           <button
             type="button"
             onClick={handleWishlistToggle}
-            className="h-12 w-12 border border-nivora-border flex items-center justify-center hover:border-[#111111] transition-colors"
+            className="h-12 w-12 border border-nivora-border hidden sm:flex items-center justify-center hover:border-[#111111] transition-colors shrink-0"
             aria-label="Wishlist toggle"
           >
             <Heart

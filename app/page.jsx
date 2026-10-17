@@ -18,8 +18,67 @@ export default async function HomePage() {
     getCategories(),
   ]);
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://hoodiebazar.com";
+
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "OnlineStore",
+    name: "Hoodie Bazar",
+    alternateName: ["NIVORA", "HoodieBazar BD"],
+    url: siteUrl,
+    logo: `${siteUrl}/images/whatsapp-avatar.svg`,
+    description:
+      "Architectural heavyweight hoodies, oversized sweatshirts, jackets, and winter streetwear essentials crafted for Bangladesh.",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Dhaka",
+      addressCountry: "BD",
+    },
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: "+8801700000000",
+      contactType: "customer service",
+      areaServed: "BD",
+      availableLanguage: ["English", "Bengali"],
+    },
+    sameAs: [
+      "https://facebook.com",
+      "https://instagram.com",
+      "https://tiktok.com",
+    ],
+  };
+
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Hoodie Bazar",
+    url: siteUrl,
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${siteUrl}/shop?q={search_term_string}`,
+      },
+      "query-input": "required name=search_term_string",
+    },
+  };
+
   return (
     <div className="w-full min-h-screen bg-white">
+      {/* Schema.org Structured Data for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(organizationSchema),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(websiteSchema),
+        }}
+      />
+
       {/* 1. Hero */}
       <Hero />
 

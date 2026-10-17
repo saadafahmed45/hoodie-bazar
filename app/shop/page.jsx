@@ -2,8 +2,27 @@ import { getProducts, getCategories } from "@/lib/db";
 import ShopClient from "./ShopClient";
 
 export const metadata = {
-  title: "Shop All Products — NIVORA | Winter Streetwear",
-  description: "Browse the complete collection of premium oversized hoodies, crewnecks, sweaters, jackets, and accessories from NIVORA.",
+  title: "Shop All Hoodies & Winter Streetwear",
+  description:
+    "Browse the complete collection of premium heavyweight hoodies, oversized crewnecks, jackets, and winter streetwear essentials at Hoodie Bazar. Fast delivery across Bangladesh.",
+  keywords: [
+    "shop hoodies bd",
+    "buy hoodies online bangladesh",
+    "oversized hoodie shop",
+    "winter clothes dhaka",
+    "hoodie bazar catalog",
+    "heavyweight sweatshirts",
+  ],
+  alternates: {
+    canonical: "/shop",
+  },
+  openGraph: {
+    title: "Shop All Hoodies & Streetwear | Hoodie Bazar",
+    description:
+      "Explore heavyweight hoodies, sweatshirts, and winter outerwear. Free shipping over ৳1,499.",
+    url: "/shop",
+    type: "website",
+  },
 };
 
 export const dynamic = "force-dynamic";

@@ -1,8 +1,19 @@
 import { RefreshCw, CheckCircle2 } from "lucide-react";
 
 export const metadata = {
-  title: "Returns & Exchanges — NIVORA",
-  description: "7-day hassle-free return and size exchange policy for NIVORA garments.",
+  title: "7-Day Returns & Size Exchange Guarantee",
+  description:
+    "Hassle-free 7-day returns and doorstep size exchange guarantee across Bangladesh for unworn Hoodie Bazar garments with original tags.",
+  alternates: {
+    canonical: "/returns",
+  },
+  openGraph: {
+    title: "Returns & Exchanges | Hoodie Bazar",
+    description:
+      "7-day hassle-free return and doorstep size exchange guarantee.",
+    url: "/returns",
+    type: "website",
+  },
 };
 
 export default function ReturnsPage() {

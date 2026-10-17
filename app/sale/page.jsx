@@ -2,8 +2,19 @@ import { getProducts } from "@/lib/db";
 import ProductCard from "@/components/products/ProductCard";
 
 export const metadata = {
-  title: "Winter Sale (Up to 30% Off) — NIVORA",
-  description: "Shop discounted premium winter streetwear and essentials from NIVORA.",
+  title: "Winter Sale — Up to 30% Off Hoodies & Sweatshirts",
+  description:
+    "Shop discounted premium winter streetwear, heavyweight hoodies, and fleece sweatshirts at Hoodie Bazar. Limited quantities available with nationwide Cash on Delivery.",
+  alternates: {
+    canonical: "/sale",
+  },
+  openGraph: {
+    title: "Winter Sale | Hoodie Bazar",
+    description:
+      "Save up to 30% on premium heavyweight hoodies and winter wear.",
+    url: "/sale",
+    type: "website",
+  },
 };
 
 export default async function SalePage() {

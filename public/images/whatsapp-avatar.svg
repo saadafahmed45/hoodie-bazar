@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <linearGradient id="avatarBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141414" />
+      <stop offset="100%" stop-color="#0a0a0a" />
+    </linearGradient>
+    <linearGradient id="limeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c6ff00" />
+      <stop offset="100%" stop-color="#a2db00" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background Circle -->
+  <circle cx="60" cy="60" r="58" fill="url(#avatarBg)" stroke="#262626" stroke-width="2.5" />
+  
+  <!-- Subtle Inner Ring -->
+  <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1" />
+
+  <!-- Monogram HB -->
+  <text 
+    x="60" 
+    y="55" 
+    dominant-baseline="central" 
+    text-anchor="middle" 
+    fill="url(#limeGrad)" 
+    font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
+    font-weight="900" 
+    font-size="40" 
+    letter-spacing="-1.5"
+  >
+    HB
+  </text>
+
+  <!-- Subtitle -->
+  <text 
+    x="60" 
+    y="84" 
+    dominant-baseline="central" 
+    text-anchor="middle" 
+    fill="#E5E5E5" 
+    font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" 
+    font-weight="700" 
+    font-size="10" 
+    letter-spacing="2.5"
+  >
+    CONCIERGE
+  </text>
+</svg>

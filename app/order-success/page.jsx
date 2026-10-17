@@ -1,8 +1,13 @@
 import OrderSuccessClient from "./OrderSuccessClient";
 
 export const metadata = {
-  title: "Order Placed Successfully — NIVORA",
-  description: "Thank you for shopping with NIVORA. Your winter streetwear order has been placed successfully.",
+  title: "Order Placed Successfully",
+  description:
+    "Thank you for shopping with Hoodie Bazar. Your winter streetwear order has been confirmed.",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default async function OrderSuccessPage(props) {

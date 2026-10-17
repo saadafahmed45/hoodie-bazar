@@ -2,9 +2,18 @@ import { getProducts } from "@/lib/db";
 import ProductCard from "@/components/products/ProductCard";
 
 export const metadata = {
-  title: "New Arrivals — NIVORA | Winter Streetwear",
+  title: "New Arrivals — Latest Winter Streetwear Drops",
   description:
-    "Explore the latest winter drop from NIVORA. Heavyweight oversized hoodies, jackets, and knitwear.",
+    "Explore the latest drop of architectural heavyweight hoodies, premium crewnecks, and outerwear at Hoodie Bazar. Limited seasonal drops crafted for Bangladesh.",
+  alternates: {
+    canonical: "/new-arrivals",
+  },
+  openGraph: {
+    title: "New Arrivals | Hoodie Bazar",
+    description: "The newest heavyweight winter hoodies and streetwear drops.",
+    url: "/new-arrivals",
+    type: "website",
+  },
 };
 
 export default async function NewArrivalsPage() {

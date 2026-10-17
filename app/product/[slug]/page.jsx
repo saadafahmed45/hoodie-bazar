@@ -12,18 +12,54 @@ export async function generateMetadata(props) {
 
   if (!product) {
     return {
-      title: "Product Not Found — NIVORA",
+      title: "Product Not Found",
       description: "The requested winter garment could not be found.",
     };
   }
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://hoodiebazar.com";
+  const productUrl = `${siteUrl}/product/${slug}`;
+  const firstImage = product.images?.[0] || `${siteUrl}/images/placeholder.jpg`;
+
   return {
-    title: `${product.name} — NIVORA | Winter Streetwear`,
-    description: product.description || `Buy ${product.name} at NIVORA. Premium winter wear crafted for Bangladesh.`,
+    title: `${product.name} — Premium Heavyweight Streetwear`,
+    description:
+      product.description ||
+      `Buy ${product.name} online at Hoodie Bazar. Premium heavyweight cotton, boxy relaxed cut, and nationwide Cash on Delivery in Bangladesh.`,
+    keywords: [
+      product.name,
+      product.category,
+      "hoodie bazar",
+      "heavyweight hoodie",
+      "winter streetwear bangladesh",
+      "cash on delivery",
+    ],
+    alternates: {
+      canonical: productUrl,
+    },
     openGraph: {
-      title: `${product.name} | NIVORA`,
+      title: `${product.name} | Hoodie Bazar`,
+      description:
+        product.description ||
+        `Buy ${product.name} at Hoodie Bazar. 100% combed cotton, 7-day returns, nationwide delivery.`,
+      url: productUrl,
+      siteName: "Hoodie Bazar",
+      locale: "en_BD",
+      type: "website",
+      images: [
+        {
+          url: firstImage,
+          width: 1000,
+          height: 1200,
+          alt: product.name,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${product.name} | Hoodie Bazar`,
       description: product.description,
-      images: product.images?.[0] ? [{ url: product.images[0] }] : [],
+      images: [firstImage],
     },
   };
 }
@@ -48,6 +84,72 @@ export default async function ProductDetailPage(props) {
     );
   }
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://hoodiebazar.com";
+  const productUrl = `${siteUrl}/product/${slug}`;
+  const images =
+    product.images && product.images.length > 0
+      ? product.images
+      : [`${siteUrl}/images/placeholder.jpg`];
+
+  const productSchema = {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    name: product.name,
+    image: images,
+    description:
+      product.description ||
+      `Premium ${product.category} from Hoodie Bazar. Crafted for colder days.`,
+    sku: String(product._id || slug),
+    brand: {
+      "@type": "Brand",
+      name: "Hoodie Bazar",
+    },
+    offers: {
+      "@type": "Offer",
+      url: productUrl,
+      priceCurrency: "BDT",
+      price: product.price,
+      priceValidUntil: "2027-12-31",
+      itemCondition: "https://schema.org/NewCondition",
+      availability: "https://schema.org/InStock",
+      seller: {
+        "@type": "Organization",
+        name: "Hoodie Bazar",
+      },
+    },
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: siteUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Shop",
+        item: `${siteUrl}/shop`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: product.category,
+        item: `${siteUrl}/shop?category=${encodeURIComponent(product.category)}`,
+      },
+      {
+        "@type": "ListItem",
+        position: 4,
+        name: product.name,
+        item: productUrl,
+      },
+    ],
+  };
+
   // Fetch 4 related products in same category or featured
   const allProducts = await getProducts({}, { createdAt: -1 });
   const relatedProducts = allProducts
@@ -57,6 +159,15 @@ export default async function ProductDetailPage(props) {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-14">
+      {/* Product & Breadcrumb JSON-LD structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       {/* Breadcrumb Navigation */}
       <div className="mb-6 flex items-center gap-2 text-xs uppercase tracking-wider text-[#888888]">
         <Link href="/shop" className="hover:text-[#111111] flex items-center gap-1">

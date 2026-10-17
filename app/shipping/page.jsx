@@ -6,8 +6,19 @@ import {
 import { Truck, Clock, ShieldCheck, RefreshCw } from "lucide-react";
 
 export const metadata = {
-  title: "Shipping & Delivery — NIVORA",
-  description: "Learn about delivery times, rates, and courier partners across Bangladesh.",
+  title: "Shipping & Nationwide Delivery Policies",
+  description:
+    "Fast delivery across Dhaka (24-48h) and nationwide Bangladesh (2-4 days). Free shipping on orders over ৳1,499. Cash on Delivery supported.",
+  alternates: {
+    canonical: "/shipping",
+  },
+  openGraph: {
+    title: "Shipping & Delivery | Hoodie Bazar",
+    description:
+      "Delivery rates, estimated times, and courier partners across Bangladesh.",
+    url: "/shipping",
+    type: "website",
+  },
 };
 
 export default function ShippingPage() {

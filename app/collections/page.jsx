@@ -3,8 +3,18 @@ import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
 export const metadata = {
-  title: "Collections — NIVORA | Winter Streetwear",
-  description: "Curated seasonal capsules and winter fashion collections designed by NIVORA.",
+  title: "Seasonal Collections & Capsules",
+  description:
+    "Curated winter capsules and architectural streetwear collections designed by Hoodie Bazar. Heavyweight fleece, oversized silhouettes, and technical outerwear.",
+  alternates: {
+    canonical: "/collections",
+  },
+  openGraph: {
+    title: "Seasonal Collections | Hoodie Bazar",
+    description: "Architectural heavyweight hoodies & curated winter capsules.",
+    url: "/collections",
+    type: "website",
+  },
 };
 
 const COLLECTIONS_LIST = [

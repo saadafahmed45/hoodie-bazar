@@ -159,3 +159,13 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #999999;
 }
+
+/* Print optimizations */
+@media print {
+  .no-print,
+  [class*="floatingWhatsapp"],
+  [class*="whatsappButton"],
+  [class*="whatsappChatBox"] {
+    display: none !important;
+  }
+}

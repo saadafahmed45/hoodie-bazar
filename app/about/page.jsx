@@ -4,8 +4,19 @@ import { BRAND_NAME, BRAND_TAGLINE, BRAND_SUBHEAD } from "@/lib/constants";
 import { ArrowRight, ShieldCheck, Feather, Compass } from "lucide-react";
 
 export const metadata = {
-  title: "About Us — NIVORA | Winter, Refined.",
-  description: "Learn about the craftsmanship, philosophy, and architectural streetwear vision behind NIVORA.",
+  title: "About Our Craftsmanship & Philosophy",
+  description:
+    "Learn about Hoodie Bazar's vision, architectural heavyweight fabrics, precision stitching, and commitment to refined winter streetwear in Bangladesh.",
+  alternates: {
+    canonical: "/about",
+  },
+  openGraph: {
+    title: "About Us | Hoodie Bazar",
+    description:
+      "Craftsmanship, architectural drape, and winter streetwear designed for Bangladesh.",
+    url: "/about",
+    type: "website",
+  },
 };
 
 export default function AboutPage() {
