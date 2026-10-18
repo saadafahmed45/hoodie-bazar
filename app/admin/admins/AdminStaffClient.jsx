@@ -180,7 +180,7 @@ export default function AdminStaffClient({ initialAdmins = [], currentAdmin }) {
         <button
           type="button"
           onClick={handleOpenCreate}
-          className="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-[#b6e600] hover:bg-[#a4cf00] text-[#111111] font-bold text-xs uppercase tracking-wider rounded-xl shadow-xs transition active:scale-95 shrink-0"
+          className="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-nivora-lime hover:bg-[#a4cf00] text-[#111111] font-bold text-xs uppercase tracking-wider rounded-xl shadow-xs transition active:scale-95 shrink-0"
         >
           <Plus className="w-4 h-4" />
           <span>Add Admin User</span>
@@ -195,13 +195,13 @@ export default function AdminStaffClient({ initialAdmins = [], currentAdmin }) {
             <span className="text-[11px] font-bold uppercase tracking-widest text-[#888888]">
               Total Staff
             </span>
-            <div className="w-8 h-8 rounded-xl bg-[#222222] flex items-center justify-center text-[#b6e600]">
+            <div className="w-8 h-8 rounded-xl bg-[#222222] flex items-center justify-center text-nivora-lime">
               <Shield className="w-4 h-4" />
             </div>
           </div>
           <div className="mt-2">
             <div className="text-3xl font-black">{admins.length}</div>
-            <p className="text-[11px] text-[#b6e600] font-bold uppercase tracking-wider mt-1">
+            <p className="text-[11px] text-nivora-lime font-bold uppercase tracking-wider mt-1">
               • Authorized accounts
             </p>
           </div>
@@ -265,7 +265,7 @@ export default function AdminStaffClient({ initialAdmins = [], currentAdmin }) {
       {/* Role explanation banner */}
       <div className="bg-[#F8F9FA] border border-slate-200/80 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
         <div className="flex items-start gap-3">
-          <div className="w-8 h-8 rounded-xl bg-[#111111] text-[#b6e600] flex items-center justify-center shrink-0 mt-0.5">
+          <div className="w-8 h-8 rounded-xl bg-[#111111] text-nivora-lime flex items-center justify-center shrink-0 mt-0.5">
             <ShieldCheck className="w-4 h-4" />
           </div>
           <div>
@@ -349,14 +349,14 @@ export default function AdminStaffClient({ initialAdmins = [], currentAdmin }) {
                       {/* Name & Email */}
                       <td className="py-3.5 px-3">
                         <div className="flex items-center gap-3">
-                          <div className="w-9 h-9 rounded-xl bg-[#111111] text-[#b6e600] font-black text-xs flex items-center justify-center shrink-0 border border-[#222222]">
+                          <div className="w-9 h-9 rounded-xl bg-[#111111] text-nivora-lime font-black text-xs flex items-center justify-center shrink-0 border border-[#222222]">
                             {admin.name?.slice(0, 2).toUpperCase() || "AD"}
                           </div>
                           <div>
                             <div className="font-bold text-[#111111] flex items-center gap-1.5">
                               <span>{admin.name}</span>
                               {isCurrent && (
-                                <span className="bg-[#b6e600] text-[#111111] text-[9px] font-black px-1.5 py-0.2 rounded-sm">
+                                <span className="bg-nivora-lime text-[#111111] text-[9px] font-black px-1.5 py-0.2 rounded-sm">
                                   YOU
                                 </span>
                               )}
@@ -371,7 +371,7 @@ export default function AdminStaffClient({ initialAdmins = [], currentAdmin }) {
                       {/* Role Badge */}
                       <td className="py-3.5 px-3">
                         {isSuper ? (
-                          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#111111] text-[#b6e600] border border-[#222222]">
+                          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#111111] text-nivora-lime border border-[#222222]">
                             <ShieldCheck className="w-3 h-3" />
                             <span>Super Admin</span>
                           </span>
@@ -578,7 +578,7 @@ export default function AdminStaffClient({ initialAdmins = [], currentAdmin }) {
                   >
                     <div className="flex items-center justify-between">
                       <span className="flex items-center gap-1.5">
-                        <ShieldCheck className="w-3.5 h-3.5 text-[#b6e600]" />
+                        <ShieldCheck className="w-3.5 h-3.5 text-nivora-lime" />
                         <span>Super Admin</span>
                       </span>
                       <input
@@ -640,7 +640,7 @@ export default function AdminStaffClient({ initialAdmins = [], currentAdmin }) {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="px-5 py-2.5 bg-[#b6e600] hover:bg-[#a4cf00] text-[#111111] font-bold text-xs uppercase tracking-wider rounded-xl shadow-xs transition active:scale-95 flex items-center gap-1.5"
+                  className="px-5 py-2.5 bg-nivora-lime hover:bg-[#a4cf00] text-[#111111] font-bold text-xs uppercase tracking-wider rounded-xl shadow-xs transition active:scale-95 flex items-center gap-1.5"
                 >
                   {submitting ? (
                     <>

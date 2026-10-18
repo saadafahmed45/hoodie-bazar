@@ -173,7 +173,7 @@ export default function AdminOrdersClient({ initialOrders = [] }) {
             <div className="text-2xl sm:text-3xl font-black font-mono tracking-tight text-white">
               {formatPrice(totalRevenue)}
             </div>
-            <p className="text-[11px] font-semibold text-[#b6e600] mt-2 flex items-center gap-1.5">
+            <p className="text-[11px] font-semibold text-nivora-lime mt-2 flex items-center gap-1.5">
               <span>●</span> Across {orders.length} total orders
             </p>
           </div>
@@ -391,7 +391,7 @@ export default function AdminOrdersClient({ initialOrders = [] }) {
                             type="button"
                             title="Download Invoice (PDF)"
                             onClick={() => setInvoiceOrder(ord)}
-                            className="p-2 bg-slate-100 hover:bg-[#111111] hover:text-[#b6e600] text-slate-700 rounded-lg transition active:scale-95 cursor-pointer"
+                            className="p-2 bg-slate-100 hover:bg-[#111111] hover:text-nivora-lime text-slate-700 rounded-lg transition active:scale-95 cursor-pointer"
                           >
                             <Printer className="h-4 w-4" />
                           </button>
@@ -557,7 +557,7 @@ export default function AdminOrdersClient({ initialOrders = [] }) {
                   }}
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-[#111111] hover:bg-[#222222] text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-xs transition active:scale-95 cursor-pointer"
                 >
-                  <Printer className="w-4 h-4 text-[#b6e600]" />
+                  <Printer className="w-4 h-4 text-nivora-lime" />
                   <span>Download / Print Invoice (PDF)</span>
                 </button>
 

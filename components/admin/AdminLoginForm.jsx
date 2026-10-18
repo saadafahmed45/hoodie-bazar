@@ -97,7 +97,7 @@ export default function AdminLoginForm() {
               {BRAND_NAME}
             </span>
           </div>
-          <span className="inline-block text-[10px] font-bold uppercase tracking-widest text-[#111111] bg-[#b6e600] px-3 py-1 rounded-full">
+          <span className="inline-block text-[10px] font-bold uppercase tracking-widest text-[#111111] bg-nivora-lime px-3 py-1 rounded-full">
             Admin Authentication
           </span>
         </div>
@@ -201,7 +201,7 @@ export default function AdminLoginForm() {
             ) : (
               <>
                 <span>ENTER DASHBOARD</span>
-                <ArrowRight className="h-4 w-4 text-[#b6e600]" />
+                <ArrowRight className="h-4 w-4 text-nivora-lime" />
               </>
             )}
           </button>

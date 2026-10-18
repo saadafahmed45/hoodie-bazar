@@ -70,12 +70,12 @@ export default async function AdminDashboardPage() {
               href="/admin/products"
               className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold uppercase tracking-wider text-white bg-[#111111] hover:bg-[#222222] rounded-xl transition shadow-xs"
             >
-              <Package className="w-3.5 h-3.5 text-[#b6e600]" />
+              <Package className="w-3.5 h-3.5 text-nivora-lime" />
               <span>Catalog</span>
             </Link>
             <Link
               href="/admin/orders"
-              className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold uppercase tracking-wider text-[#111111] bg-[#b6e600] hover:bg-[#a4cf00] rounded-xl shadow-xs transition"
+              className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold uppercase tracking-wider text-[#111111] bg-nivora-lime hover:bg-[#a4cf00] rounded-xl shadow-xs transition"
             >
               <ShoppingBag className="w-3.5 h-3.5" />
               <span>Orders</span>
@@ -86,12 +86,12 @@ export default async function AdminDashboardPage() {
         {/* 4 Metric Cards with site primary color scheme */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {/* Card 1: TOTAL SALES (Nivora Editorial Black + Electric Lime) */}
-          <div className="bg-[#111111] text-white rounded-2xl p-5 shadow-xs border border-[#222222] relative overflow-hidden flex flex-col justify-between min-h-[140px] hover:translate-y-[-2px] transition duration-200">
+          <div className="bg-[#111111] text-white rounded-2xl p-5 shadow-xs border border-[#222222] relative overflow-hidden flex flex-col justify-between min-h-35 hover:-translate-y-0.5 transition duration-200">
             <div className="flex items-center justify-between">
               <span className="text-xs font-bold text-[#888888] tracking-widest uppercase text-[11px]">
                 Total Sales
               </span>
-              <div className="w-8 h-8 rounded-xl bg-[#222222] flex items-center justify-center text-[#b6e600]">
+              <div className="w-8 h-8 rounded-xl bg-[#222222] flex items-center justify-center text-nivora-lime">
                 <TrendingUp className="w-4 h-4" />
               </div>
             </div>
@@ -100,14 +100,14 @@ export default async function AdminDashboardPage() {
               <div className="text-2xl sm:text-3xl font-black tracking-tight text-white mt-1">
                 {formatPrice(totalSales)}
               </div>
-              <div className="text-[11px] text-[#b6e600] font-bold uppercase tracking-wider mt-1.5 flex items-center gap-1">
+              <div className="text-[11px] text-nivora-lime font-bold uppercase tracking-wider mt-1.5 flex items-center gap-1">
                 <span>• Lifetime store revenue</span>
               </div>
             </div>
           </div>
 
           {/* Card 2: TOTAL ORDERS (White Card) */}
-          <div className="bg-white text-[#111111] rounded-2xl p-5 shadow-xs border border-slate-200/80 relative overflow-hidden flex flex-col justify-between min-h-[140px] hover:translate-y-[-2px] transition duration-200">
+          <div className="bg-white text-[#111111] rounded-2xl p-5 shadow-xs border border-slate-200/80 relative overflow-hidden flex flex-col justify-between min-h-35 hover:-translate-y-0.5 transition duration-200">
             <div className="flex items-center justify-between">
               <span className="text-xs font-bold text-[#888888] tracking-widest uppercase text-[11px]">
                 Total Orders
@@ -128,7 +128,7 @@ export default async function AdminDashboardPage() {
           </div>
 
           {/* Card 3: PENDING ORDERS (White Card with Amber highlight) */}
-          <div className="bg-white text-[#111111] rounded-2xl p-5 shadow-xs border border-slate-200/80 relative overflow-hidden flex flex-col justify-between min-h-[140px] hover:translate-y-[-2px] transition duration-200">
+          <div className="bg-white text-[#111111] rounded-2xl p-5 shadow-xs border border-slate-200/80 relative overflow-hidden flex flex-col justify-between min-h-35 hover:-translate-y-0.5 transition duration-200">
             <div className="flex items-center justify-between">
               <span className="text-xs font-bold text-[#888888] tracking-widest uppercase text-[11px]">
                 Pending Orders
@@ -149,7 +149,7 @@ export default async function AdminDashboardPage() {
           </div>
 
           {/* Card 4: ACTIVE CATALOG (White Card with Lime highlight) */}
-          <div className="bg-white text-[#111111] rounded-2xl p-5 shadow-xs border border-slate-200/80 relative overflow-hidden flex flex-col justify-between min-h-[140px] hover:translate-y-[-2px] transition duration-200">
+          <div className="bg-white text-[#111111] rounded-2xl p-5 shadow-xs border border-slate-200/80 relative overflow-hidden flex flex-col justify-between min-h-35 hover:-translate-y-0.5 transition duration-200">
             <div className="flex items-center justify-between">
               <span className="text-xs font-bold text-[#888888] tracking-widest uppercase text-[11px]">
                 Active Catalog

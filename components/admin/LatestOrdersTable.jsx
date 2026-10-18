@@ -132,7 +132,7 @@ export default function LatestOrdersTable({ liveOrders = [] }) {
           {/* Manage Orders Link */}
           <Link
             href="/admin/orders"
-            className="text-xs font-bold uppercase tracking-wider text-[#111111] bg-[#b6e600] hover:bg-[#a4cf00] px-3.5 py-1.5 rounded-lg transition flex items-center gap-1 shadow-xs"
+            className="text-xs font-bold uppercase tracking-wider text-[#111111] bg-nivora-lime hover:bg-[#a4cf00] px-3.5 py-1.5 rounded-lg transition flex items-center gap-1 shadow-xs"
           >
             <span>View All</span>
             <ArrowRight className="w-3 h-3" />

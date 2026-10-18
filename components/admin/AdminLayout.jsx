@@ -92,7 +92,7 @@ export default function AdminLayout({ children, session }) {
         <div className="flex items-center gap-2">
           <Link
             href="/admin/products"
-            className="p-1.5 bg-[#b6e600] text-[#111111] rounded-lg text-xs font-bold flex items-center gap-1"
+            className="p-1.5 bg-nivora-lime text-[#111111] rounded-lg text-xs font-bold flex items-center gap-1"
           >
             <Plus className="w-3.5 h-3.5" />
             <span>New</span>
@@ -150,7 +150,7 @@ export default function AdminLayout({ children, session }) {
                 >
                   <Icon
                     className={`h-4 w-4 ${
-                      isActive ? "text-[#b6e600]" : "text-slate-500"
+                      isActive ? "text-nivora-lime" : "text-slate-500"
                     }`}
                   />
                   <span>{item.label}</span>
@@ -184,7 +184,7 @@ export default function AdminLayout({ children, session }) {
                       <div
                         className={`w-7 h-7 rounded-lg flex items-center justify-center transition-colors ${
                           isActive
-                            ? "bg-white/10 text-[#b6e600]"
+                            ? "bg-white/10 text-nivora-lime"
                             : "bg-slate-100 text-slate-500 group-hover:bg-slate-200 group-hover:text-[#111111]"
                         }`}
                       >
@@ -193,7 +193,7 @@ export default function AdminLayout({ children, session }) {
                       <span className="text-[13px] font-semibold">{item.label}</span>
                     </div>
                     {isActive ? (
-                      <ChevronRight className="h-4 w-4 text-[#b6e600]" />
+                      <ChevronRight className="h-4 w-4 text-nivora-lime" />
                     ) : (
                       <ChevronRight className="h-4 w-4 text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity" />
                     )}
@@ -209,7 +209,7 @@ export default function AdminLayout({ children, session }) {
           {/* Store Catalog Card in Editorial Black & Lime */}
           <div className="bg-[#111111] rounded-2xl p-4 text-white relative overflow-hidden shadow-xs border border-[#222222]">
             <div className="relative z-10">
-              <div className="w-8 h-8 rounded-lg bg-[#222222] border border-[#333333] flex items-center justify-center mb-2.5 text-[#b6e600]">
+              <div className="w-8 h-8 rounded-lg bg-[#222222] border border-[#333333] flex items-center justify-center mb-2.5 text-nivora-lime">
                 <Package className="w-4 h-4" />
               </div>
               <h3 className="text-sm font-bold text-white tracking-tight uppercase">
@@ -220,7 +220,7 @@ export default function AdminLayout({ children, session }) {
               </p>
               <Link
                 href="/admin/products"
-                className="block w-full mt-3 bg-[#b6e600] hover:bg-[#a4cf00] text-[#111111] text-xs font-bold uppercase tracking-wider py-2 px-3 rounded-xl shadow-xs transition active:scale-95 text-center"
+                className="block w-full mt-3 bg-nivora-lime hover:bg-[#a4cf00] text-[#111111] text-xs font-bold uppercase tracking-wider py-2 px-3 rounded-xl shadow-xs transition active:scale-95 text-center"
               >
                 Manage Products
               </Link>
@@ -274,7 +274,7 @@ export default function AdminLayout({ children, session }) {
               onClick={() => setProfileDropdownOpen(!profileDropdownOpen)}
               className="flex items-center gap-2.5 text-left p-1 rounded-xl hover:bg-slate-50 transition"
             >
-              <div className="w-8 h-8 rounded-full bg-[#111111] text-[#b6e600] font-bold text-xs flex items-center justify-center shrink-0 border border-[#222222]">
+              <div className="w-8 h-8 rounded-full bg-[#111111] text-nivora-lime font-bold text-xs flex items-center justify-center shrink-0 border border-[#222222]">
                 {initials || "HB"}
               </div>
               <div className="hidden sm:block">
@@ -282,7 +282,7 @@ export default function AdminLayout({ children, session }) {
                   <span className="text-xs font-bold text-[#111111] leading-tight">
                     {adminName}
                   </span>
-                  <span className="text-[9px] font-black uppercase tracking-wider bg-[#111111] text-[#b6e600] px-1.5 py-0.2 rounded-sm">
+                  <span className="text-[9px] font-black uppercase tracking-wider bg-[#111111] text-nivora-lime px-1.5 py-0.2 rounded-sm">
                     {isSuperAdmin ? "ADMIN" : "STAFF"}
                   </span>
                 </div>
@@ -302,7 +302,7 @@ export default function AdminLayout({ children, session }) {
                     {adminEmail}
                   </div>
                   <div className="mt-1">
-                    <span className="inline-block text-[9px] font-extrabold uppercase tracking-wider bg-[#111111] text-[#b6e600] px-1.5 py-0.5 rounded-sm">
+                    <span className="inline-block text-[9px] font-extrabold uppercase tracking-wider bg-[#111111] text-nivora-lime px-1.5 py-0.5 rounded-sm">
                       {isSuperAdmin ? "Super Administrator" : "Customer Management"}
                     </span>
                   </div>

@@ -344,7 +344,7 @@ export default function OrderInvoice({ order, onClose, autoPrint = false }) {
       <div className="no-print bg-[#0f172a] text-white px-5 py-3 flex items-center justify-between sticky top-0 z-50 shadow-md">
         <div className="flex items-center gap-3">
           <span className="text-xs font-bold uppercase tracking-wider text-[#cbd5e1]">
-            Cash Memo: <span className="text-[#b6e600] font-mono">#{order.orderId || order._id}</span>
+            Cash Memo: <span className="text-nivora-lime font-mono">#{order.orderId || order._id}</span>
           </span>
           <span className="hidden sm:inline-block text-[11px] bg-[#1e293b] text-[#cbd5e1] px-2.5 py-0.5 rounded font-mono uppercase">
             {order.status || "Pending"}
@@ -357,7 +357,7 @@ export default function OrderInvoice({ order, onClose, autoPrint = false }) {
             type="button"
             onClick={handleDownloadPdf}
             disabled={downloadingPdf}
-            className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#b6e600] hover:bg-[#a4cf00] text-[#111111] font-bold text-xs uppercase tracking-wider rounded-lg transition active:scale-95 shadow-sm cursor-pointer disabled:opacity-60"
+            className="inline-flex items-center gap-1.5 px-4 py-2 bg-nivora-lime hover:bg-[#a4cf00] text-[#111111] font-bold text-xs uppercase tracking-wider rounded-lg transition active:scale-95 shadow-sm cursor-pointer disabled:opacity-60"
           >
             {downloadingPdf ? (
               <>

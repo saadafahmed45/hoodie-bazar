@@ -147,7 +147,7 @@ export default function SalesOvertimeChart({ orders = [] }) {
               <span>Revenue</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#b6e600] border border-black/10" />
+              <span className="w-2.5 h-2.5 rounded-full bg-nivora-lime border border-black/10" />
               <span>Orders</span>
             </div>
           </div>
@@ -155,7 +155,7 @@ export default function SalesOvertimeChart({ orders = [] }) {
       </div>
 
       {/* SVG Chart */}
-      <div className="relative w-full h-[220px] sm:h-[240px] select-none">
+      <div className="relative w-full h-55 sm:h-60 select-none">
         <svg
           viewBox={`0 0 ${width} ${height}`}
           className="w-full h-full overflow-visible"
@@ -281,7 +281,7 @@ export default function SalesOvertimeChart({ orders = [] }) {
             transform: "translate(-50%, -100%)",
           }}
         >
-          <div className="bg-[#111111] text-white border border-[#222222] rounded-xl shadow-lg px-3 py-2 text-[10px] min-w-[125px]">
+          <div className="bg-[#111111] text-white border border-[#222222] rounded-xl shadow-lg px-3 py-2 text-[10px] min-w-31.25">
             <div className="text-[9px] font-bold uppercase tracking-wider text-[#888888] mb-1">
               {activePoint.fullLabel}
             </div>
@@ -296,10 +296,10 @@ export default function SalesOvertimeChart({ orders = [] }) {
             </div>
             <div className="flex items-center justify-between gap-3 mt-1">
               <div className="flex items-center gap-1.5 text-slate-300 font-medium">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#b6e600]" />
+                <span className="w-1.5 h-1.5 rounded-full bg-nivora-lime" />
                 <span>Orders</span>
               </div>
-              <span className="font-bold text-[#b6e600]">
+              <span className="font-bold text-nivora-lime">
                 {activePoint.orders}
               </span>
             </div>

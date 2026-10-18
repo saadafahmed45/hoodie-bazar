@@ -123,7 +123,7 @@ export default function AdminCustomersClient({ initialCustomers = [], currentAdm
             onClick={handleExportCSV}
             className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-[#111111] hover:bg-[#222222] text-white font-bold text-xs uppercase tracking-wider rounded-xl shadow-xs transition active:scale-95"
           >
-            <Download className="w-4 h-4 text-[#b6e600]" />
+            <Download className="w-4 h-4 text-nivora-lime" />
             <span>Export Customers CSV</span>
           </button>
         </div>
@@ -137,13 +137,13 @@ export default function AdminCustomersClient({ initialCustomers = [], currentAdm
             <span className="text-[11px] font-bold uppercase tracking-widest text-[#888888]">
               Total Buyers
             </span>
-            <div className="w-8 h-8 rounded-xl bg-[#222222] flex items-center justify-center text-[#b6e600]">
+            <div className="w-8 h-8 rounded-xl bg-[#222222] flex items-center justify-center text-nivora-lime">
               <Users className="w-4 h-4" />
             </div>
           </div>
           <div className="mt-2">
             <div className="text-3xl font-black">{totalCustomers}</div>
-            <p className="text-[11px] text-[#b6e600] font-bold uppercase tracking-wider mt-1">
+            <p className="text-[11px] text-nivora-lime font-bold uppercase tracking-wider mt-1">
               • Verified purchasing clients
             </p>
           </div>
@@ -292,7 +292,7 @@ export default function AdminCustomersClient({ initialCustomers = [], currentAdm
                             <span>{cust.phone}</span>
                           </span>
                           {cust.email && cust.email !== "N/A" && (
-                            <span className="text-[11px] text-slate-500 truncate max-w-[160px] flex items-center gap-1">
+                            <span className="text-[11px] text-slate-500 truncate max-w-40 flex items-center gap-1">
                               <Mail className="w-3 h-3 text-slate-400" />
                               <span>{cust.email}</span>
                             </span>
@@ -324,7 +324,7 @@ export default function AdminCustomersClient({ initialCustomers = [], currentAdm
                       {/* Tier Badge */}
                       <td className="py-3.5 px-3">
                         {isVip ? (
-                          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#111111] text-[#b6e600] border border-[#222222]">
+                          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#111111] text-nivora-lime border border-[#222222]">
                             <Crown className="w-3 h-3" />
                             <span>VIP Buyer</span>
                           </span>
@@ -365,7 +365,7 @@ export default function AdminCustomersClient({ initialCustomers = [], currentAdm
           <div className="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-slate-200 relative max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between pb-4 border-b border-slate-100 mb-4">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-2xl bg-[#111111] text-[#b6e600] font-black text-sm flex items-center justify-center">
+                <div className="w-10 h-10 rounded-2xl bg-[#111111] text-nivora-lime font-black text-sm flex items-center justify-center">
                   {selectedCustomer.name?.slice(0, 2).toUpperCase()}
                 </div>
                 <div>
@@ -419,7 +419,7 @@ export default function AdminCustomersClient({ initialCustomers = [], currentAdm
                     onClick={() => handleUpdateStatus(selectedCustomer.id, tier)}
                     className={`px-3 py-1 text-xs font-bold rounded-lg transition ${
                       selectedCustomer.status === tier
-                        ? "bg-[#111111] text-[#b6e600] shadow-xs"
+                        ? "bg-[#111111] text-nivora-lime shadow-xs"
                         : "bg-slate-100 text-slate-600 hover:bg-slate-200"
                     }`}
                   >
