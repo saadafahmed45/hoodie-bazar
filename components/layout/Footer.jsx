@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { InstagramIcon, FacebookIcon } from "@/components/icons/SocialIcons";
 import { BRAND_NAME, BRAND_TAGLINE } from "@/lib/constants";
+import { categoryHref } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
@@ -117,7 +118,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/shop?category=Hoodies" className="hover:text-white uppercase tracking-wider transition-colors">
+                <Link href={categoryHref("Hoodies")} className="hover:text-white uppercase tracking-wider transition-colors">
                   Hoodies
                 </Link>
               </li>

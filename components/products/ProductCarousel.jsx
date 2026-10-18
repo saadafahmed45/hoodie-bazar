@@ -4,6 +4,7 @@ import { useRef, useState, useEffect, useCallback, useMemo } from "react";
 import Link from "next/link";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import ProductCard from "@/components/products/ProductCard";
+import { categoryHref } from "@/lib/utils";
 
 export default function ProductCarousel({
   badge = "JUST DROPPED",
@@ -129,9 +130,7 @@ export default function ProductCarousel({
 
   // Determine dynamic View All link based on selected category
   const dynamicViewAllHref =
-    selectedCategory === "All"
-      ? viewAllHref
-      : `/shop?category=${encodeURIComponent(selectedCategory)}`;
+    selectedCategory === "All" ? viewAllHref : categoryHref(selectedCategory);
 
   const dynamicViewAllText =
     selectedCategory === "All" ? viewAllText : `VIEW ALL ${selectedCategory.toUpperCase()}`;
