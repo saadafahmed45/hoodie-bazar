@@ -19,6 +19,7 @@ import {
   Truck,
 } from "lucide-react";
 import { BRAND_NAME, NAV_LINKS, CATEGORIES } from "@/lib/constants";
+import { categoryHref } from "@/lib/utils";
 import { useCartStore } from "@/store/cart-store";
 import { useWishlistStore } from "@/store/wishlist-store";
 import { useAuth } from "@/context/AuthContext";
@@ -344,7 +345,7 @@ export default function Navbar() {
                   {categories.map((cat) => (
                     <Link
                       key={cat._id || cat.slug || cat.name}
-                      href={`/shop?category=${encodeURIComponent(cat.name)}`}
+                      href={categoryHref(cat.name)}
                       onClick={() => setMobileMenuOpen(false)}
                       className="flex items-center justify-between text-xs uppercase tracking-wider text-[#555555] hover:text-[#111111]"
                     >

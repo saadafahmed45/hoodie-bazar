@@ -20,6 +20,12 @@ export default async function sitemap() {
       priority: 0.9,
     },
     {
+      url: `${baseUrl}/hoodies`,
+      lastModified: new Date(),
+      changeFrequency: "daily",
+      priority: 0.9,
+    },
+    {
       url: `${baseUrl}/new-arrivals`,
       lastModified: new Date(),
       changeFrequency: "daily",

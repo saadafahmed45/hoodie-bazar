@@ -2,6 +2,7 @@ import NextLink from "next/link";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { CATEGORIES } from "@/lib/constants";
+import { categoryHref } from "@/lib/utils";
 
 export default function CategorySection({ categories = [] }) {
   const displayCategories =
@@ -38,7 +39,7 @@ export default function CategorySection({ categories = [] }) {
           {displayCategories.map((cat, idx) => (
             <NextLink
               key={cat._id || cat.slug || cat.name}
-              href={`/shop?category=${encodeURIComponent(cat.name)}`}
+              href={categoryHref(cat.name)}
               className="group relative aspect-3/4 overflow-hidden bg-nivora-dark border border-nivora-border flex flex-col justify-end p-4 transition-all"
             >
               {/* Background Image */}
