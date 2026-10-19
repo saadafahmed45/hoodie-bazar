@@ -19,6 +19,7 @@ import {
   LogOut,
   ExternalLink,
   Store,
+  SlidersHorizontal,
 } from "lucide-react";
 import HoodieBazarLogo from "./HoodieBazarLogo";
 import { BRAND_NAME } from "@/lib/constants";
@@ -57,6 +58,7 @@ export default function AdminLayout({ children, session }) {
 
   const mainNavItems = [
     { label: "Overview", href: "/admin", icon: LayoutGrid },
+    { label: "Hero Slider", href: "/admin/hero-slides", icon: SlidersHorizontal },
     { label: "Products", href: "/admin/products", icon: Package },
     { label: "Categories", href: "/admin/categories", icon: FolderTree },
     { label: "Orders", href: "/admin/orders", icon: ShoppingBag },

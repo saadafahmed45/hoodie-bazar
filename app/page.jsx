@@ -8,14 +8,15 @@ import EditorialSection from "@/components/home/EditorialSection";
 import SaleSection from "@/components/home/SaleSection";
 import InstagramGallery from "@/components/home/InstagramGallery";
 import NewsletterSection from "@/components/home/NewsletterSection";
-import { getProducts, getCategories } from "@/lib/db";
+import { getProducts, getCategories, getHeroSlides } from "@/lib/db";
 
 export const revalidate = 60;
 
 export default async function HomePage() {
-  const [products, categories] = await Promise.all([
+  const [products, categories, heroSlides] = await Promise.all([
     getProducts({}, { createdAt: -1 }),
     getCategories(),
+    getHeroSlides({ activeOnly: true }),
   ]);
 
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://hoodiebazar.com";
@@ -80,7 +81,7 @@ export default async function HomePage() {
       />
 
       {/* 1. Hero */}
-      <Hero />
+      <Hero initialSlides={heroSlides} />
 
       {/* 2. Benefits Bar */}
       <BenefitsBar />
